@@ -1,0 +1,14 @@
+{
+  "vodka": {
+    "pump_code": 1,
+    "amount": 1000
+  },
+  "gin": {
+    "pump_code": 2,
+    "amount": 1000
+  },
+  "orange_juice": {
+    "pump_code": 3,
+    "amount": 2000
+  }
+}

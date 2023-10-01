@@ -1,0 +1,17 @@
+{
+  "screwdriver": {
+    "description": "A mexican screwdriver which guarantees no work will be done.",
+    "ingredients": {
+      "orange_juice": 80,
+      "vodka": 30
+    }
+  },
+  "cosmopolitan": {
+    "description": "The original drink from sex and the city",
+    "ingredients": {
+      "vodka": 60,
+      "cointreu": 45,
+      "cranberry_juice": 90
+    }
+  }
+}
