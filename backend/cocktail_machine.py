@@ -1,12 +1,17 @@
 import json
+import sys
+import os
+from pathlib import Path
 from pump import Pump
 import logging
 from datatypes import CocktailRecipe
 from typing import List
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename="cocktail_machine.log", encoding="utf-8", level=logging.DEBUG)
-PUMPS_FILE = "./data/pumps.json"
-COCKTAIL_RECIPES_FILE = "data/cocktails.json"
+os.chdir(Path(__file__).parent)
+
+PUMPS_FILE = "data/pumps.json"
+COCKTAIL_RECIPES_FILE =  "data/cocktails.json"
 STATISTICS_FILE = "data/statistics.json"
 
 class CocktailMachine():

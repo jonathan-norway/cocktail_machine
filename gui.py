@@ -1,7 +1,8 @@
 from guizero import App, ListBox, PushButton, Text, TextBox, Box
 import sys
+import os
+sys.path.append(os.getcwd() + "/backend/")
 
-sys.path.append("../backend/")
 from backend.cocktail_machine import CocktailMachine
 cocktail_machine = CocktailMachine()
 
