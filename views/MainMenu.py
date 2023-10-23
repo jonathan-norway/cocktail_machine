@@ -57,3 +57,4 @@ class NavButton(QPushButton):
     shadow.setOffset(3,3)
     self.setGraphicsEffect(shadow)
   
+  

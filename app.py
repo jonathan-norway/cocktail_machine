@@ -1,12 +1,13 @@
 import sys
-
-from PyQt6.QtWidgets import QApplication, QDialog, QMainWindow, QPushButton, QStackedLayout, QLabel, QVBoxLayout, QWidget,QHBoxLayout
-from PyQt6.QtGui import QColor, QPalette, QFont, QFontDatabase, QPixmap
+from typing import Callable
+from PyQt6.QtWidgets import QApplication, QDialog, QMainWindow, QPushButton, QStackedLayout, QLabel, QVBoxLayout, QWidget,QHBoxLayout,QSpacerItem, QSizePolicy
+from PyQt6.QtGui import QColor, QPalette, QFont, QFontDatabase, QPixmap, QIcon
 from PyQt6.QtCore import Qt, QSize
 from pathlib import Path
 from GuiConstants import GuiViews
 from views.MainMenu import MainView
 from views.DrinkMenu import DrinkMenuView
+
 color_palette = {
     "black": "#191919",
     "white": "#FFFFFF",
@@ -45,21 +46,32 @@ class MainWindow(QMainWindow):
         content_layout.addWidget(DrinkMenuView(navigate_func=self.navigate_to))
         self.content_layout.setCurrentIndex(1)
         
-    def get_header(self) -> QLabel:
+    def get_header(self) -> QWidget:
         header_layout = QHBoxLayout()
-        header_layout.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        pixmap = QPixmap("icons/shaker.png")
-        pixmap = pixmap.scaled(QSize(36,36), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+        
+        header_layout.setAlignment(Qt.AlignmentFlag.AlignRight)
+        shaker_pixmap = QPixmap("icons/shaker.png")
+        shaker_pixmap = shaker_pixmap.scaled(QSize(45,45), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
         pixmap_label = QLabel()
-        pixmap_label.setPixmap(pixmap)
+        pixmap_label.setPixmap(shaker_pixmap)
+        pixmap_label.setFixedSize(55,55)
         header_layout.addWidget(pixmap_label)
         title_label = QLabel("MixMaster")
-        title_label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        title_font = QFont("Roboto", 32)
+        title_label.setFixedWidth(250)
+        title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        title_font = QFont("Roboto", 40)
         title_label.setFont(title_font)
         header_layout.addWidget(title_label)
         header_widget = QWidget()
         header_widget.setLayout(header_layout)
+        subheader_spacing_item = QSpacerItem(
+            225, 5
+        )
+        header_layout.addSpacerItem(subheader_spacing_item)
+        self.main_menu_button = MainMenuReturnButton(navigate_func=self.navigate_to)
+        header_layout.addWidget(self.main_menu_button)
+        header_layout.addSpacerItem(QSpacerItem(30,5))
+        header_widget.setStyleSheet("border-bottom: 2px solid black")
         return header_widget
         
     def set_palette(self):
@@ -76,7 +88,33 @@ class MainWindow(QMainWindow):
         dlg.exec()
         
     def navigate_to(self, gui_view_enum):
+        if (gui_view_enum == GuiViews.MAIN_MENU):
+            self.main_menu_button.setVisible(False)
+        else:
+            self.main_menu_button.setVisible(True)
         self.content_layout.setCurrentIndex(gui_view_enum.value)
+
+
+class MainMenuReturnButton(QWidget):
+    def __init__(self, navigate_func: Callable):
+        super(MainMenuReturnButton, self).__init__()
+        return_pixmap = QPixmap("icons/house.png")
+        return_pixmap = return_pixmap.scaled(QSize(55,55), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+        sizePolicy = self.sizePolicy()
+        sizePolicy.setRetainSizeWhenHidden(True)
+        self.setSizePolicy(sizePolicy)
+        self.return_label = QLabel()
+        self.return_label.setPixmap(return_pixmap)
+        self.return_label.setFixedSize(60, 60)
+        self.navigate_func = navigate_func
+        default_layout = QHBoxLayout()
+        default_layout.setAlignment(Qt.AlignmentFlag.AlignRight)
+        default_layout.addWidget(self.return_label)
+        self.setLayout(default_layout)
+        
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.navigate_func(GuiViews.MAIN_MENU)
 
 
 app = QApplication(sys.argv)
