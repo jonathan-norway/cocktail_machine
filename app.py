@@ -4,9 +4,12 @@ from PyQt6.QtWidgets import QApplication, QDialog, QMainWindow, QPushButton, QSt
 from PyQt6.QtGui import QColor, QPalette, QFont, QFontDatabase, QPixmap, QIcon
 from PyQt6.QtCore import Qt, QSize
 from pathlib import Path
-from GuiConstants import GuiViews
+import GuiConstants
 from views.MainMenu import MainView
 from views.DrinkMenu import DrinkMenuView
+import os
+#sys.path.append(os.getcwd() + "/backend/")
+#from backend.cocktail_machine import CocktailMachine
 
 color_palette = {
     "black": "#191919",
@@ -15,20 +18,21 @@ color_palette = {
 }
 
 
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
+        #self.setStyleSheet("border: 1px solid red")
         QFontDatabase.addApplicationFont("./roboto-regular.ttf")
         self.setWindowTitle("MixMaster")
-        self.resize(1024, 600)
+        self.resize(GuiConstants.MAX_WIDTH, GuiConstants.MAX_HEIGHT)
         
         self.set_palette()
         self.setup_main_window()
+        #self.cocktail_machine = CocktailMachine()
         
     def setup_main_window(self):
         main_layout = QVBoxLayout()
-        
+        main_layout.setContentsMargins(10,0,10,10)
         main_layout.addWidget(self.get_header())
         self.content_layout = QStackedLayout()
         content_widget = QWidget()
@@ -43,7 +47,7 @@ class MainWindow(QMainWindow):
     def add_views(self):
         content_layout = self.content_layout
         content_layout.addWidget(MainView(navigate_to=self.navigate_to))
-        content_layout.addWidget(DrinkMenuView(navigate_func=self.navigate_to))
+        content_layout.addWidget(DrinkMenuView())
         self.content_layout.setCurrentIndex(1)
         
     def get_header(self) -> QWidget:
@@ -71,6 +75,7 @@ class MainWindow(QMainWindow):
         self.main_menu_button = MainMenuReturnButton(navigate_func=self.navigate_to)
         header_layout.addWidget(self.main_menu_button)
         header_layout.addSpacerItem(QSpacerItem(30,5))
+        header_widget.setFixedHeight(90)
         header_widget.setStyleSheet("border-bottom: 2px solid black")
         return header_widget
         
@@ -88,7 +93,7 @@ class MainWindow(QMainWindow):
         dlg.exec()
         
     def navigate_to(self, gui_view_enum):
-        if (gui_view_enum == GuiViews.MAIN_MENU):
+        if (gui_view_enum == GuiConstants.GuiViews.MAIN_MENU):
             self.main_menu_button.setVisible(False)
         else:
             self.main_menu_button.setVisible(True)
@@ -114,7 +119,7 @@ class MainMenuReturnButton(QWidget):
         
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
-            self.navigate_func(GuiViews.MAIN_MENU)
+            self.navigate_func(GuiConstants.GuiViews.MAIN_MENU)
 
 
 app = QApplication(sys.argv)

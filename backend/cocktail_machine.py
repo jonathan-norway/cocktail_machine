@@ -13,13 +13,16 @@ os.chdir(Path(__file__).parent)
 PUMPS_FILE = "data/pumps.json"
 COCKTAIL_RECIPES_FILE =  "data/cocktails.json"
 STATISTICS_FILE = "data/statistics.json"
+BASE_ALCOHOLS_FILE = "data/base_alcohols.json"
 
 class CocktailMachine():
-  def __init__(self):  
+  
+  def __init__(self):
     self.load_pumps_and_ingredients()
     self.load_cocktail_recipes()
     self.load_statistics()
-    
+
+
   def load_pumps_and_ingredients(self):
     pumps_dict = {}
     with open(PUMPS_FILE, mode="rt", encoding="utf-8") as f:

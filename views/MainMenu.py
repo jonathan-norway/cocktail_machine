@@ -38,7 +38,7 @@ class NavButton(QPushButton):
       icon = QIcon(icon_path)
       self.setIcon(icon)
       self.setIconSize(icon.actualSize(QSize(64,64)))
-    font = QFont()
+    font = self.font()
     font.setPointSize(22)
     font.setCapitalization(QFont.Capitalization.AllUppercase)
     self.setFont(font)
@@ -46,7 +46,6 @@ class NavButton(QPushButton):
     self.clicked.connect(lambda: on_clicked())
     self.setStyleSheet("""
       QPushButton {
-       
         border-radius: 5px;
         border: 2px solid black;
       }              
