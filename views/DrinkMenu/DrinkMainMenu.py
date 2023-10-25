@@ -15,7 +15,7 @@ from PyQt6.QtCore import Qt, QSize
 from GuiConstants import color_palette, GuiViews, base_alcohols
 from typing import Callable
 from enum import Enum, auto
-
+from ..Components import SecondHeader, ModeMenuLayout, MenuModeCard
 
 class DrinkMenuModes(Enum):
     MAIN = 0
@@ -27,21 +27,19 @@ class DrinkMenuModes(Enum):
 class DrinkMenuView(QWidget):
     def __init__(self):
         super(DrinkMenuView, self).__init__()
-        #self.setFixedHeight(300)
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0,0,0,0)
         main_layout.setAlignment(Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
         self.setLayout(main_layout)
+        self.subheader = SecondHeader()
 
-        subheader_widget = DrinkMenuView.get_subheader(
-            lambda: self.inner_navigate(DrinkMenuModes.MAIN)
-        )
+      
         self.sub_menu_layout = QStackedLayout()
         self.sub_menu_layout.addWidget(self.menu_modes_menu())
         self.sub_menu_layout.addWidget(self.base_alcohol_mode())
         sub_menu_widget = QWidget()
         sub_menu_widget.setLayout(self.sub_menu_layout)
-        main_layout.addWidget(subheader_widget)
+        main_layout.addWidget(self.subheader)
         main_layout.addWidget(sub_menu_widget)
         shadow = QGraphicsDropShadowEffect()
         shadow.setBlurRadius(10)
@@ -49,28 +47,9 @@ class DrinkMenuView(QWidget):
         shadow.setOffset(3, 3)
         self.setGraphicsEffect(shadow)
         #self.setFixedHeight(500)
-
-    def inner_navigate(self, to: DrinkMenuModes):
-        self.sub_menu_layout.setCurrentIndex(to.value)
-        print(to.name)
-
-    def base_alcohol_mode(self):
-        self.card_list = CardList()
-        for base_alcohol in base_alcohols:
-            self.card_list.add_card(
-                Card(
-                    title=base_alcohol["name"],
-                    description=base_alcohol["description"],
-                    icon_path=base_alcohol["icon"],
-                    on_click=lambda x: print(f"PRESSED {x}"),
-                )
-            )
-        return self.card_list
-
+    
     def menu_modes_menu(self):
-        layout = QHBoxLayout()
-        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.setSpacing(20)
+        layout = ModeMenuLayout()
         layout.addWidget(
             MenuModeCard(
                 title="Base Alcohol",
@@ -99,114 +78,26 @@ class DrinkMenuView(QWidget):
         widget.setLayout(layout)
         return widget
 
-    def get_subheader(navigate_func: Callable):
-        subheader_layout = QHBoxLayout()
-        subheader_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        subheader_return_arrow = MainMenuReturnButton(lambda x: navigate_func())
 
-        subheader_icon_label = QLabel()
-        subheader_pixmap = QPixmap("icons/cocktail.png")
-        subheader_pixmap = subheader_pixmap.scaled(
-            QSize(36, 36),
-            Qt.AspectRatioMode.KeepAspectRatio,
-            Qt.TransformationMode.SmoothTransformation,
-        )
-        subheader_icon_label.setPixmap(subheader_pixmap)
+    def inner_navigate(self, to: DrinkMenuModes):
+        self.sub_menu_layout.setCurrentIndex(to.value)
+        self.subheader.previous_button.update_nav(lambda: self.sub_menu_layout.setCurrentIndex(0))
+        print(to.name)
 
-        subheader_title = QLabel("Drink Menu")
-        font = subheader_title.font()
-        font.setPointSize(26)
-        #self.setFixedHeight(260)
-        subheader_title.setFont(font)
+    def base_alcohol_mode(self):
+        self.card_list = CardList()
+        for base_alcohol in base_alcohols:
+            self.card_list.add_card(
+                Card(
+                    title=base_alcohol["name"],
+                    description=base_alcohol["description"],
+                    icon_path=base_alcohol["icon"],
+                    on_click=lambda x: print(f"PRESSED {x}"),
+                )
+            )
+        return self.card_list
 
-        subheader_spacing_item = QSpacerItem(
-            150, 5, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum
-        )
-        main_label_layout = QHBoxLayout()
-        main_label_layout.setAlignment(Qt.AlignmentFlag.AlignCenter|Qt.AlignmentFlag.AlignTop)
-        main_label_layout.addWidget(subheader_icon_label)
-        main_label_layout.addWidget(subheader_title)
-        main_label_layout.setContentsMargins(0,0,0,0)
-        main_label_widget = QWidget()
-        main_label_widget.setLayout(main_label_layout)
-        subheader_layout.addSpacerItem(QSpacerItem(15, 5))
-        subheader_layout.addWidget(
-            subheader_return_arrow, Qt.AlignmentFlag.AlignLeft
-        )
-        subheader_layout.addWidget(main_label_widget, Qt.AlignmentFlag.AlignCenter)
-        subheader_layout.addItem(subheader_spacing_item)
-        subheader_layout.setContentsMargins(0,0,0,0)
-        subheader_layout.setSpacing(0)
-        subheader_widget = QWidget()
-        subheader_widget.setLayout(subheader_layout)
-        subheader_widget.setContentsMargins(0,0,0,0)
-        subheader_widget.setFixedHeight(50)
-        return subheader_widget
-
-
-class MenuModeCard(QFrame):
-    def __init__(
-        self,
-        title: str,
-        on_click: Callable,
-        icon_path: str = None,
-        description: str = "",
-    ):
-        super(MenuModeCard, self).__init__()
-        layout = QVBoxLayout()
-        self.setLayout(layout)
-        layout.setAlignment(Qt.AlignmentFlag.AlignTop|Qt.AlignmentFlag.AlignHCenter)
-        self.on_click = on_click
-
-        title_label = QLabel(title)
-        title_label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        title_font = title_label.font()
-        title_font.setPointSize(22)
-        title_label.setFont(title_font)
-        title_label.setContentsMargins(0,15,0,20)
-        layout.addWidget(title_label)
-
-
-        icon_label = QLabel()
-        icon_pixmap = QPixmap(icon_path)
-        icon_pixmap = icon_pixmap.scaled(
-            QSize(85, 85),
-            Qt.AspectRatioMode.KeepAspectRatio,
-            Qt.TransformationMode.SmoothTransformation,
-        )
-        icon_label.setPixmap(icon_pixmap)
-        icon_label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        layout.addWidget(icon_label)
-
-        description_label = QLabel(description)
-        description_font = QFont()
-        description_font.setPointSize(16)
-        description_label.setFont(description_font)
-        description_label.setWordWrap(True)
-        description_label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        description_label.setFixedHeight(100)
-        description_label.setContentsMargins(10,10,10,0)
-        layout.addWidget(description_label)
-        
-        
-        self.setFrameStyle(1)
-        self.setLineWidth(1)
-        self.setFixedSize(QSize(300, 340))
-        #self.setStyleSheet(r"QFrame { border-radius: 5px; background-color: white;}")
-
-
-    def mousePressEvent(self, event):
-        if event.button() == Qt.MouseButton.LeftButton:
-            self.on_click()
-
-
-class MainMenuReturnButton(QPushButton):
-    def __init__(self, navigate_func: Callable):
-        return_icon = QIcon("icons/return.png")
-        return_icon.actualSize(QSize(36, 36))
-        super(MainMenuReturnButton, self).__init__(icon=return_icon)
-        self.setFixedSize(130, 30)
-        self.clicked.connect(lambda: navigate_func(GuiViews.MAIN_MENU))
+   
 
 
 class Card(QFrame):

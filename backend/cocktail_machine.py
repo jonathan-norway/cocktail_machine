@@ -15,6 +15,16 @@ COCKTAIL_RECIPES_FILE =  "data/cocktails.json"
 STATISTICS_FILE = "data/statistics.json"
 BASE_ALCOHOLS_FILE = "data/base_alcohols.json"
 
+class CocktailMachineSingleton:
+  __instance = None
+  
+  @staticmethod
+  def get_instance():
+    if CocktailMachineSingleton.__instance == None:
+      __instance = CocktailMachine()
+    return __instance
+
+
 class CocktailMachine():
   
   def __init__(self):

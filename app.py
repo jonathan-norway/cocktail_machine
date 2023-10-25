@@ -6,7 +6,7 @@ from PyQt6.QtCore import Qt, QSize
 from pathlib import Path
 import GuiConstants
 from views.MainMenu import MainView
-from views.DrinkMenu import DrinkMenuView
+from views import CustomDrinkMenu, ShotsMainMenu, DrinkMenuView
 import os
 #sys.path.append(os.getcwd() + "/backend/")
 #from backend.cocktail_machine import CocktailMachine
@@ -48,6 +48,8 @@ class MainWindow(QMainWindow):
         content_layout = self.content_layout
         content_layout.addWidget(MainView(navigate_to=self.navigate_to))
         content_layout.addWidget(DrinkMenuView())
+        content_layout.addWidget(CustomDrinkMenu())
+        content_layout.addWidget(ShotsMainMenu())
         self.content_layout.setCurrentIndex(1)
         
     def get_header(self) -> QWidget:
