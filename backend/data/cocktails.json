@@ -1,17 +1,48 @@
 {
-  "screwdriver": {
-    "description": "A mexican screwdriver which guarantees no work will be done.",
-    "ingredients": {
-      "orange_juice": 80,
-      "vodka": 30
-    }
-  },
   "cosmopolitan": {
-    "description": "The original drink from sex and the city",
+    "base": "vodka",
+    "description": "The Cosmopolitan, often known simply as the Cosmo, is a timeless and elegant cocktail that boasts a delightful combination of flavors. Its beautiful pink hue and refreshing citrus notes make it a beloved classic. The exact origin of the Cosmopolitan is debated, but it's believed to have been popularized in the 1980s in New York City",
+    "summary": "The OG drink from Sex and the City",
     "ingredients": {
-      "vodka": 60,
-      "cointreu": 45,
-      "cranberry_juice": 90
-    }
+      "vodka": "30mL",
+      "cointreu": "10mL",
+      "cranberry juice": "30mL",
+      "lime juice": "15mL"
+    },
+    "garnish": "lime wedge",
+    "glass_type": "cocktail glass",
+    "tags": [
+      "IBA",
+      "Pink",
+      "Iconic"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster",
+      "Add mixture, lime juice, and cranberry juice into a shaker with ice",
+      "Shake until well-chilled",
+      "Strain into a chilled cocktail glass",
+      "Garnish with a lime wedge",
+      "Serve!"
+    ],
+    "external_link": "https://www.liquor.com/recipes/cosmopolitan/"
+  },
+  "template": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
   }
 }

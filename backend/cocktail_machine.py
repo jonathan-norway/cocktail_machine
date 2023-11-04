@@ -2,9 +2,9 @@ import json
 import sys
 import os
 from pathlib import Path
-from pump import Pump
+from .pump import Pump
 import logging
-from datatypes import CocktailRecipe
+from .datatypes import CocktailRecipe
 from typing import List
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename="cocktail_machine.log", encoding="utf-8", level=logging.DEBUG)
@@ -14,6 +14,7 @@ PUMPS_FILE = "data/pumps.json"
 COCKTAIL_RECIPES_FILE =  "data/cocktails.json"
 STATISTICS_FILE = "data/statistics.json"
 BASE_ALCOHOLS_FILE = "data/base_alcohols.json"
+INGREDIENTS_FILE = "data/ingredients.json"
 
 class CocktailMachineSingleton:
   __instance = None
@@ -22,32 +23,43 @@ class CocktailMachineSingleton:
   def get_instance():
     if CocktailMachineSingleton.__instance == None:
       __instance = CocktailMachine()
+      logger.warn("Created new instance of cocktail machine")
+    else:
+      logger.info("Reused cocktail machine instance")
     return __instance
 
 
 class CocktailMachine():
   
   def __init__(self):
-    self.load_pumps_and_ingredients()
-    self.load_cocktail_recipes()
+    self.ingredients_dict = {}
+    self.pumps_dict = {}
+    self.load_ingredients()
+    self.load_pumps()
     self.load_statistics()
+    self.load_ingredients()
+    self.load_cocktail_recipes()
 
 
-  def load_pumps_and_ingredients(self):
-    pumps_dict = {}
+  def load_pumps(self):
     with open(PUMPS_FILE, mode="rt", encoding="utf-8") as f:
-      pumps_dict = json.load(f)
-    for bottle_name, pump_data in pumps_dict.items():
+      temp_pumps_dict = json.load(f)
+    for bottle_name, pump_data in temp_pumps_dict.items():
       pump = Pump(pump_data["pump_code"], bottle_name, pump_data["amount"])
-      pumps_dict[bottle_name] = pump
-    self.pumps_dict = pumps_dict
+      self.pumps_dict[bottle_name] = pump
+
     
+  def load_ingredients(self):
+    with open(INGREDIENTS_FILE, mode="rt", encoding="utf-8") as f:
+      ingredients_dict: dict = json.load(f)
+    for ingredient, amount in ingredients_dict.items():
+      self.ingredients_dict[ingredient] = amount
   
   def pour_cocktail(self, cocktail_name: str):
     logger.info("Pouring cocktail '" + cocktail_name + "...")
     try:
       cocktail_recipe: CocktailRecipe = self.get_cocktail_recipe(cocktail_name)
-      logger.debug("0")
+      #logger.debug("0")
       for ingredient, amount in cocktail_recipe["ingredients"].items():
         pump: Pump = self.pumps_dict[ingredient]
         pump.assert_enough_amount(amount)
@@ -66,28 +78,58 @@ class CocktailMachine():
       
     
     
-  def get_cocktail_recipe(self, cocktail_name: str) -> dict:
-    if not cocktail_name in self.cocktail_recipes.keys():
+  def get_cocktail_recipe(self, cocktail_name: str) -> CocktailRecipe:
+    try:
+      cocktail_recipe = self.cocktail_recipes[cocktail_name]
+    except Exception as e:
       logger.error(f"Cocktail_name '{cocktail_name}' does not exist.")
-      raise ValueError("Cocktail does not exist")
-    cocktail_recipe = self.cocktail_recipes[cocktail_name]
-    logger.debug(cocktail_recipe)
+      logger.error(e)
+      return None
     return cocktail_recipe
   
+  def get_cocktail_recipes(self) -> dict[str,CocktailRecipe]:
+    logger.debug("Got all cocktails")
+    return self.cocktail_recipes
+  
+  def get_cocktail_recipes_by_base(self, base_alcohol: str) -> dict[str, CocktailRecipe]:
+    logger.debug(f"Got cocktails by base ({base_alcohol})")
+    cocktails = self.get_cocktail_recipes()
+    filtered_cocktails =  {cocktail_name: cocktail_data
+                          for cocktail_name, cocktail_data in cocktails.items()
+                          if cocktail_data.base.lower() == base_alcohol.lower()}
+    return filtered_cocktails
+  
+  def get_cocktail_recipe_by_name(self, cocktail_name: str) -> CocktailRecipe:
+    logger.debug(f"Got cocktail by name ({cocktail_name})")
+    cocktails = self.get_cocktail_recipes()
+    cocktail_recipe = cocktails.get(cocktail_name)
+    assert cocktail_recipe is not None
+    return cocktail_recipe
+    
+  
   def load_cocktail_recipes(self):
-    cocktail_recipes = {}
+    cocktail_recipes: dict[str, CocktailRecipe] = {}
     with open(COCKTAIL_RECIPES_FILE, mode="rt", encoding="utf-8") as f:
-      temp_cocktail_recipes = json.load(f)
+      temp_cocktail_recipes: dict[str, dict] = json.load(f)
+    
     for cocktail_name, cocktail_data in temp_cocktail_recipes.items():
-      has_all_ingredients = True
-      required_ingredients = cocktail_data["ingredients"].keys()
-      for ingredient in required_ingredients:
-        if not self.pumps_dict.get(ingredient):
-          has_all_ingredients = False
-          logger.warn(f"Does not have required ingredient '{ingredient}' for cocktail '{cocktail_name}'")
+      cocktail = CocktailRecipe(name=cocktail_name, **cocktail_data)
+      
+      has_all_ingredients = self.check_if_have_all_ingredients(cocktail.ingredients)
       if has_all_ingredients:
-        cocktail_recipes[cocktail_name] = cocktail_data
+        cocktail_recipes[cocktail_name] = cocktail
+      else:
+        logger.warn(f"Missing ingredients for cocktail '{cocktail_name}'")
     self.cocktail_recipes = cocktail_recipes
+    
+  def check_if_have_all_ingredients(self, ingredients: dict[str, str]) -> bool:
+    has_all_ingredients = True
+    for ingredient, amount in ingredients.items():
+      if not (self.pumps_dict.get(ingredient) or self.ingredients_dict.get(ingredient)):
+        logger.warn(f"\tDoes not have required ingredient '{ingredient}'")
+        has_all_ingredients = False
+        
+    return has_all_ingredients
     
   def update_statistics(self, drink_name: str) -> None:
     statistics = self.statistics

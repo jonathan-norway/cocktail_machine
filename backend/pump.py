@@ -5,7 +5,7 @@ logging.basicConfig(encoding="utf-8", level=logging.DEBUG)
 
 class Pump():
   
-  def __init__(self, pump_code: str, bottle: str, amount: str ):
+  def __init__(self, pump_code: str, bottle: str, amount: int ):
     self.pump_code = pump_code
     self.bottle = bottle
     self.amount = amount

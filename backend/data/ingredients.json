@@ -1,8 +1,21 @@
 {
-  "whiskey": 300,
-  "vodka": 1000,
-  "gin": 550,
-  "cointreu": 200,
-  "sparking_water": 300,
-  "orange_juice": 100
+  "sparkling water": 300,
+  "orange juice": 100,
+  "tonic": 600,
+  "lemon juice": 300,
+  "cranberry juice": 300,
+  "lime juice": 350,
+  "cola": 1000,
+  "apple juice": 300,
+  "tomato juice": 500,
+  "ginger beer": 500,
+  "coconut milk": 400,
+  "simple syrup": 1000,
+  "basil": 20,
+  "mint": 20,
+  "kahlua": 300,
+  "absinth": 150,
+  "lillet blanc": 300,
+  "olive": 20,
+  "vermouth": 300
 }

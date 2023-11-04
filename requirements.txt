@@ -1,3 +1,4 @@
 guizero
 smbus2
 pygame
+qrcode

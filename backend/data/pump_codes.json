@@ -3,6 +3,11 @@
   "gin": 2,
   "whiskey": 3,
   "cointreu": 4,
-  "sparking_water": 5,
-  "orange_juice": 6
+  "tequila": 5,
+  "aquavit": 6,
+  "bourbon": 7,
+  "xante": 8,
+  "jagermeister": 9,
+  "gin_2": 10,
+  "vodka_2": 11
 }

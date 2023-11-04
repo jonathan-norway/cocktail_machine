@@ -7,11 +7,19 @@ class Ingredient:
   """Class representing an ingredient with name and amount (mL)"""
   name: str
   amount: int
+  unit: str
 
-@dataclass
+@dataclass(frozen=True)
 class CocktailRecipe:
-  """Class representing a cocktail recipe"""
+  """Dataclass representing a cocktail recipe"""
   name: str
+  base: str
   description: str
-  ingredients: dict
-  
+  summary: str
+  ingredients: dict[str, str]
+  tags: list[str]
+  origin_country: str
+  steps: list[str]
+  external_link: str
+  garnish: str
+  glass_type: str

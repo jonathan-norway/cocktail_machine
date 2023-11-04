@@ -1,0 +1,201 @@
+{
+  "screwdriver": {
+    "description": "A mexican screwdriver which guarantees no work will be done.",
+    "ingredients": {
+      "orange juice": "80mL",
+      "vodka": "30mL"
+    },
+    "metadata": {
+      "base": "vodka"
+    }
+  },
+  "bloody mary": {
+    "description": "A mexican screwdriver which guarantees no work will be done.",
+    "ingredients": {
+      "tomato juice": "80mL",
+      "vodka": "30mL"
+    },
+    "metadata": {
+      "base": "vodka"
+    }
+  },
+  "moscow mule": {
+    "description": "A russian classic.",
+    "ingredients": {
+      "ginger beer": "80mL",
+      "vodka": "30mL"
+    },
+    "metadata": {
+      "base": "vodka"
+    }
+  },
+  "vodka fizz": {
+    "description": "A dutch lightweight",
+    "ingredients": {
+      "sparkling water": "80mL",
+      "vodka": "30mL"
+    },
+    "metadata": {
+      "base": "vodka"
+    }
+  },
+  "Cosmopolitan": {
+    "description": "The Cosmopolitan, often known simply as the 'Cosmo,' is a timeless and elegant cocktail that boasts a delightful combination of flavors. Its beautiful pink hue and refreshing citrus notes make it a beloved classic. The exact origin of the Cosmopolitan is debated, but it's believed to have been popularized in the 1980s in New York City",
+    "summary": "The original drink from Sex and the City",
+    "ingredients": {
+      "vodka": "60mL",
+      "cointreu": "45mL",
+      "cranberry juice": "90mL"
+    },
+    "metadata": {
+      "base": "vodka",
+      "tags": [
+        "IBA",
+        "Sophisticated",
+        "Pink",
+        "Iconic",
+        "House Favorite"
+      ]
+    }
+  },
+  "vodka tonic": {
+    "description": "The original drink from sex and the city",
+    "ingredients": {
+      "vodka": "60mL",
+      "tonic": "100mL"
+    },
+    "metadata": {
+      "base": "vodka"
+    }
+  },
+  "lemon drop": {
+    "description": "Lemon Drop is just as delicious as the hard candies that inspired it",
+    "ingredients": {
+      "vodka": "60mL",
+      "lemon juice": "100mL"
+    },
+    "metadata": {
+      "base": "vodka"
+    }
+  },
+  "vodka gimlet": {
+    "description": "A spinoff of the classic gimlet with gin",
+    "ingredients": {
+      "vodka": "60mL",
+      "lime juice": "20mL",
+      "simple syrup": "10mL"
+    },
+    "metadata": {
+      "base": "vodka",
+      "mix-method": "shake",
+      "garnish": "lemon-wedge"
+    }
+  },
+  "Madras": {
+    "description": "The Madras cocktail is a tangy and refreshing, starring vodka, cranberry and orange juice.",
+    "ingredients": {
+      "vodka": "40mL",
+      "cranberry juice": "60mL",
+      "simple syrup": "10mL",
+      "orange juice": "20mL"
+    },
+    "metadata": {
+      "base": "vodka",
+      "mix-method": "shake",
+      "garnish": "lemon-wedge",
+      "tags": [
+        "summer"
+      ]
+    }
+  },
+  "Espresso Martini": {
+    "description": "The ideal pick-me-up for a lazy afternoon or an after dinner drink…it even doubles as dessert!",
+    "ingredients": {
+      "vodka": "40mL",
+      "kahlua": "30mL",
+      "simple syrup": "30mL",
+      "coffee": "40mL"
+    },
+    "metadata": {
+      "base": "vodka",
+      "mix-method": "shake",
+      "garnish": "coffee beans",
+      "glass": "martini glass",
+      "tags": [
+        "classy"
+      ]
+    }
+  },
+  "cuba libre": {
+    "description": "a carribean classic",
+    "ingredients": {
+      "rum": "60mL",
+      "coconut milk": "30mL",
+      "lime juice": "15mL"
+    },
+    "metadata": {
+      "base": "gin"
+    }
+  },
+  "Dry Martini": {
+    "description": "Bond, James Bond",
+    "ingredients": {
+      "gin": "60mL",
+      "vermouth": "20mL",
+      "olive": "1pcs"
+    },
+    "metadata": {
+      "base": "gin"
+    }
+  },
+  "Corpse Reviver #2": {
+    "description": "A hangover cure from the late 1800s",
+    "ingredients": {
+      "gin": "20mL",
+      "cointreu": "20mL",
+      "lillet blanc": "20mL",
+      "lemon juice": "20mL",
+      "absinth": "1drop"
+    },
+    "metadata": {
+      "base": "gin"
+    }
+  },
+  "Gin Gin Mule": {
+    "description": "A hangover cure from the late 1800s",
+    "ingredients": {
+      "gin": "40mL",
+      "lillet blanc": "20mL",
+      "lime juice": "20mL",
+      "simple syrup": "30mL",
+      "ginger beer": "50mL",
+      "mint": "5pcs"
+    },
+    "metadata": {
+      "base": "gin"
+    }
+  },
+  "Basil Smash": {
+    "description": "A modern classic",
+    "ingredients": {
+      "gin": "60mL",
+      "lemon juice": "30mL",
+      "simple syrup": "20mL",
+      "basil": "5pcs"
+    },
+    "metadata": {
+      "base": "gin"
+    }
+  },
+  "Gin Tonic": {
+    "description": "This used to be a medicine for malaria!",
+    "ingredients": {
+      "gin": "40mL",
+      "lime juice": "20mL",
+      "tonic": "100mL"
+    },
+    "metadata": {
+      "base": "gin"
+    }
+  }
+}
