@@ -41,9 +41,9 @@ class CocktailMachineClass():
     def load_pumps(self):
         self.pumps_dict = {}
         temp_pumps_dict = self.read_file(PUMPS_FILE)
-        for bottle_name, pump_data in temp_pumps_dict.items():
-            pump = Pump(pump_data["pump_code"], bottle_name, pump_data["amount"])
-            self.pumps_dict[bottle_name] = pump
+        for _, pump_data in temp_pumps_dict.items():
+            pump = Pump(**pump_data)
+            self.pumps_dict[pump_data["contains"]] = pump
 
     def read_file(file_path: str):
         with open(file_path, mode="rt", encoding="utf-8") as f:
@@ -140,10 +140,10 @@ class CocktailMachineClass():
     def update_pumps(self) -> None:
         pumps = self.pumps_dict
         temp_dict = {}
-        for bottle, pump in pumps.items():
-            temp_dict[bottle] = pump.as_dict()
+        # for bottle, pump in pumps.items():
+        #    temp_dict[bottle] = pump.as_dict()
         with open(PUMPS_FILE, mode="wt", encoding="utf-8") as f:
-            json.dump(temp_dict, f)
+            json.dump(pumps, f)
 
     def load_statistics(self):
         with open(STATISTICS_FILE, mode="rt", encoding="utf-8") as f:

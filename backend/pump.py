@@ -1,6 +1,7 @@
 import logging
 import smbus2
-
+from dataclasses import dataclass, field
+import re
 logger = logging.getLogger(__name__)
 logging.basicConfig(encoding="utf-8", level=logging.DEBUG)
 
@@ -21,19 +22,22 @@ class ArduinoService:
 arduino_service = ArduinoService()
 
 
+@dataclass
 class Pump:
     ML_P_MS = 0.045
+    PUMP_STARTED = 65,
+    pump_code: str = field()
+    bottle: str = field(default="")
+    amount: int = field
+    internal: str = field(default=False)
+    tube_volume: int = field()
+    confirm_flush_internal: bool = field(default=False)
 
-    def __init__(self, pump_code: str, bottle: str, amount: int,
-                 internal: bool, tube_volume: int, i2c_addr):
-        logger.debug(f"Initiated pump with pump code {pump_code}")
-        self.pump_code = pump_code
-        self.bottle = bottle
-        self.amount = amount
-        self.internal = internal
-        self.tube_volume = tube_volume
-        self.i2c_addr = i2c_addr
-        self.confirm_flush_internal = False
+    def __post_init__(self):
+        [arduino_id, pump_id] = self.pump_code.split("-")
+        self.pump_number: str = re.findall(r"(\d+)", pump_id)[0]
+        self.i2c_addr: bytes = ArduinoService.ArduinoToAddressDict[re.findall(
+            r"(\d+)", arduino_id)[0]]
 
     def pour_amount(self, amount_to_pour: int):
         assert self.amount >= amount_to_pour
@@ -72,22 +76,25 @@ class Pump:
     def pump_logger_format(self):
         return f"pump #{self.pump_code} containing '{self.bottle}'"
 
-    def as_dict(self) -> dict:
-        return {
-            "pump_code": self.pump_code,
-            "amount": self.amount
-        }
-
     def send_pump_event(self, amount: int):
         logger.info(f"Sending pump event to {self.pump_logger_format()} for {amount}ml")
         time_bytes = self.__number_to_bytes(self.__calculate_ms(amount))
         # What does the initial write do?
-        # arduino_service.write_block_data(arduino_service.i2c_addr_6,
+        #  arduino_service.write_block_data(self.i2c_addr, [self.pump_started, *time_bytes])
         # [self.pump_started, *time_bytes])
-        send = []
+        send = [self.pump_number, *time_bytes]
+        logger.debug(
+            f"Sending bytes to arduino on behalf of pump '{self.pump_code}'. Payload: {send}")
+        arduino_service.write_block_data(self.i2c_addr, send)
 
     def __number_to_bytes(self, number: int):
-        pass
+        if number < 0 or number > 65535:
+            raise ValueError(
+                f"Invalid value '{number}'. Number must be between 0 and 65535 (16-bit range)")
+        # Extract the two bytes using bitwise operations
+        byte1 = (number >> 8) & 0xFF
+        byte2 = number & 0xFF
+        return [byte1, byte2]
 
     def __calculate_ms(self, ml):
         return int(ml / self.ML_P_MS)
