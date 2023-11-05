@@ -1,3 +1,4 @@
+README.md
 setup.py
 backend/__init__.py
 backend/cocktail_machine.py
@@ -6,6 +7,16 @@ backend/pump.py
 frontend/GuiConstants.py
 frontend/__init__.py
 frontend/app.py
+frontend/views/MainMenu.py
+frontend/views/__init__.py
+frontend/views/Components/Drink.py
+frontend/views/Components/Headers.py
+frontend/views/Components/Labels.py
+frontend/views/Components/MainMenu.py
+frontend/views/Components/ModeMenu.py
+frontend/views/Components/NavCard.py
+frontend/views/Components/PreviousButton.py
+frontend/views/Components/__init__.py
 myproject.egg-info/PKG-INFO
 myproject.egg-info/SOURCES.txt
 myproject.egg-info/dependency_links.txt

@@ -1,7 +1,7 @@
-from .NavCard  import NavCard
-from .PreviousButton import PreviousButton
+from .Drink import DetailedDrinkView, DrinkCard, DrinkList
 from .Headers import SecondHeader
-from .ModeMenu import ModeMenuLayout, MenuModeCard
 from .Labels import CenterQLabel
-from .Drink import DrinkCard, DrinkList, DetailedDrinkView
 from .MainMenu import MainMenu
+from .ModeMenu import MenuModeCard, ModeMenuLayout
+from .NavCard import NavCard
+from .Buttons import PreviousButton, MakeMeADrinkButton

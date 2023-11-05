@@ -1,1 +1,1 @@
-from backend import CocktailMachineSingleton
+from backend import CocktailMachine

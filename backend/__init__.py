@@ -1,1 +1,1 @@
-from .cocktail_machine import CocktailMachineSingleton
+from .cocktail_machine import CocktailMachine

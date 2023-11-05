@@ -1,4 +1,5 @@
-guizero
 smbus2
 pygame
 qrcode
+pillow
+pyqt6

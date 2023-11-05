@@ -1,6 +1,44 @@
 {
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "ms-python.autopep8"
   },
-  "python.formatting.provider": "none"
+ 
+"python.autoComplete.addBrackets": true,
+"python.autoComplete.brackets": [
+    {
+        "open": "{",
+        "close": "}",
+        "before": ["("],
+        "after": [",", ": "]
+    }
+],
+"python.autoComplete.bracketArrays": [
+    {
+        "before": ["["],
+        "after": [",", ":", "{"]
+    }
+],
+"editor.formatOnSave": true,
+"editor.formatOnPaste": true,
+"autopep8.enable": true,
+"autopep8.args": [
+    "--ignore=E402",
+    "--max-line-length=100",
+    "--aggressive",
+    "--verbose"
+],
+"isort.run": true,
+"isort.settings": {
+    "profile": "black",
+    "line_length": 100,
+    "known_third_party": ["flask", "pandas", "numpy"],
+    "sections": [
+        "FUTURE",
+        "STDLIB",
+        "THIRDPARTY",
+        "FIRSTPARTY",
+        "LOCALFOLDER"
+    ]
+},
+"python.analysis.completeFunctionParens": true
 }

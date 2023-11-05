@@ -1,22 +1,14 @@
-from PyQt6.QtWidgets import (
-    QWidget,
-    QHBoxLayout,
-    QVBoxLayout,
-    QLabel,
-    QPushButton,
-    QSpacerItem,
-    QSizePolicy,
-    QStackedLayout,
-    QFrame,
-    QGraphicsDropShadowEffect,
-)
-from PyQt6.QtGui import QIcon, QPixmap, QFont, QColor
-from PyQt6.QtCore import Qt, QSize
-from GuiConstants import color_palette, GuiViews, base_alcohols
+from enum import Enum, auto
 from typing import Callable
-from enum import Enum, auto 
- 
- 
+
+from GuiConstants import GuiViews, base_alcohols, color_palette
+from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtGui import QColor, QFont, QIcon, QPixmap
+from PyQt6.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
+                             QLabel, QPushButton, QSizePolicy, QSpacerItem,
+                             QStackedLayout, QVBoxLayout, QWidget)
+
+
 class ModeMenuLayout(QHBoxLayout):
     def __init__(self):
         super(ModeMenuLayout, self).__init__()

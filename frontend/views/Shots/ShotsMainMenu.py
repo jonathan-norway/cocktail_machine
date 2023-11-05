@@ -1,22 +1,16 @@
-from PyQt6.QtWidgets import (
-    QWidget,
-    QHBoxLayout,
-    QVBoxLayout,
-    QLabel,
-    QPushButton,
-    QSpacerItem,
-    QSizePolicy,
-    QStackedLayout,
-    QFrame,
-    QGraphicsDropShadowEffect,
-)
-from PyQt6.QtGui import QIcon, QPixmap, QFont, QColor
-from PyQt6.QtCore import Qt, QSize
-from GuiConstants import color_palette, GuiViews, base_alcohols
-from typing import Callable
+import os
 from enum import Enum, auto
-from ..Components import SecondHeader, ModeMenuLayout,MainMenu ,MenuModeCard
-import os 
+from typing import Callable
+
+from GuiConstants import GuiViews, base_alcohols, color_palette
+from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtGui import QColor, QFont, QIcon, QPixmap
+from PyQt6.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
+                             QLabel, QPushButton, QSizePolicy, QSpacerItem,
+                             QStackedLayout, QVBoxLayout, QWidget)
+
+from ..Components import MainMenu, MenuModeCard, ModeMenuLayout, SecondHeader
+
 current_directory = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 class ShotModeMenu(Enum):
     MAIN = 0

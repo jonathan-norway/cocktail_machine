@@ -1,4 +1,49 @@
-{'cosmopolitan': {'base': 'vodka', 'description': "The Cosmopolitan, often known simply as the 'Cosmo,' is a timeless and elegant cocktail that boasts a delightful combination of flavors. Its beautiful pink hue and refreshing citrus notes make it a beloved classic. The exact origin of the Cosmopolitan is debated, but it's believed to have been popularized in the 1980s in New York City", 'summary': 'The OG drink from Sex and the City', 'ingredients': {'vodka': '30mL', 'cointreu': '10mL', 'cranberry juice': '30mL', 'lime juice': '15mL'
-    }, 'garnish': 'lime wedge', 'glass_type': 'cocktail glass', 'tags': ['IBA', 'Sophisticated', 'Pink', 'Iconic', 'House Favorite'
-    ], 'origin_country': 'USA', 'steps': ['Run MixMaster', 'Add mixture, lime juice, and cranberry juice into a shaker with ice', 'Shake until well-chilled', 'Strain into a chilled cocktail glass', 'Garnish with a lime wedge', 'Serve!'
-    ], 'external_link': 'https: //www.liquor.com/recipes/cosmopolitan/'}, 'template': {'base': 'vodka', 'description': 'test', 'summary': 'test', 'ingredients': {'vodka': 'test'}, 'garnish': '', 'glass_type': '', 'tags': ['fancy'], 'origin_country': 'USA', 'steps': ['Run MixMaster'], 'external_link': 'https://www.liquor.com/recipes/TEMPLATE/'}}
+<!-- HTML !-->
+<button class="button-7" role="button">Button 7</button>
+
+/* CSS */
+.button-7 {
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255,
+    255,
+    255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,
+    "Segoe UI",
+    "Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-7:hover,
+.button-7:focus {
+  background-color: #07c;
+}
+
+.button-7:focus {
+  box-shadow: 0 0 0 4px rgba(0,
+    149,
+    255, .15);
+}
+
+.button-7:active {
+  background-color: #0064bd;
+  box-shadow: none;
+}

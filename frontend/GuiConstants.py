@@ -1,10 +1,13 @@
-from enum import Enum, auto
 import os
+from enum import Enum, auto
 
-color_palette = {"black": "#231F20", "white": "#F2F1E6", "blue": "#05A3AD"}
+color_palette = {
+    "black": "#231F20", "white": "#F2F1E6", "blue": "#05A3AD", "button-color": "#0095f"
+}
 MAX_WIDTH = 1024
 MAX_HEIGHT = 600
 current_directory = os.path.dirname(__file__)
+
 
 class GuiViews(Enum):
     MAIN_MENU = 0

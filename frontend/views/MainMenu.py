@@ -1,13 +1,17 @@
-from PyQt6.QtWidgets import QWidget, QHBoxLayout,QLabel,QFrame, QVBoxLayout, QPushButton, QGraphicsDropShadowEffect
-from PyQt6.QtGui import QIcon, QPixmap, QFont, QColor, QPainter
-from PyQt6.QtCore import QSize
-import sys
 import os
+import sys
 from pathlib import Path
-#sys.path.append(str(Path(__file__).parent.parent.resolve()) + "/GuiConstants.py")
-from GuiConstants import color_palette, GuiViews
 from typing import Callable
+
+#sys.path.append(str(Path(__file__).parent.parent.resolve()) + "/GuiConstants.py")
+from GuiConstants import GuiViews, color_palette
+from PyQt6.QtCore import QSize
+from PyQt6.QtGui import QColor, QFont, QIcon, QPainter, QPixmap
+from PyQt6.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
+                             QLabel, QPushButton, QVBoxLayout, QWidget)
+
 from .Components import NavCard
+
 current_directory = os.path.dirname(os.path.dirname(__file__))
 
 class MainView(QWidget):

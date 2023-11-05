@@ -1,16 +1,18 @@
-import sys
-from typing import Callable
-from PyQt6.QtWidgets import QApplication, QDialog, QMainWindow, QPushButton, QStackedLayout, QLabel, QVBoxLayout, QWidget,QHBoxLayout,QSpacerItem, QSizePolicy
-from PyQt6.QtGui import QColor, QPalette, QFont, QFontDatabase, QPixmap, QIcon
-from PyQt6.QtCore import Qt, QSize
-from pathlib import Path
-import GuiConstants
-from views.MainMenu import MainView
-from views import CustomDrinkMenu, ShotsMainMenu, DrinkMenuView, UtilsMain
 import os
+import sys
+from pathlib import Path
+from typing import Callable
+
+import GuiConstants
 from PIL import Image
-#sys.path.append(os.getcwd() + "/backend/")
-#from backend.cocktail_machine import CocktailMachine
+from PyQt6.QtCore import QSize, Qt
+from PyQt6.QtGui import QColor, QFont, QFontDatabase, QIcon, QPalette, QPixmap
+from PyQt6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
+                             QMainWindow, QPushButton, QSizePolicy,
+                             QSpacerItem, QStackedLayout, QVBoxLayout, QWidget)
+from views import CustomDrinkMenu, DrinkMenuView, ShotsMainMenu, UtilsMain
+from views.MainMenu import MainView
+
 color_palette = {
     "black": "#191919",
     "white": "#FFFFFF",
@@ -18,21 +20,21 @@ color_palette = {
 }
 current_directory = os.path.dirname(__file__)
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-        #self.setStyleSheet("border: 1px solid red")
+        # self.setStyleSheet("border: 1px solid red")
         QFontDatabase.addApplicationFont(current_directory + "/roboto-regular.ttf")
         self.setWindowTitle("MixMaster")
         self.resize(GuiConstants.MAX_WIDTH, GuiConstants.MAX_HEIGHT)
-        #self.setFixedSize(GuiConstants.MAX_WIDTH, GuiConstants.MAX_HEIGHT)
+        # self.setFixedSize(GuiConstants.MAX_WIDTH, GuiConstants.MAX_HEIGHT)
         self.set_palette()
         self.setup_main_window()
-        #self.cocktail_machine = CocktailMachine()
-        
+
     def setup_main_window(self):
         main_layout = QVBoxLayout()
-        main_layout.setContentsMargins(10,0,10,10)
+        main_layout.setContentsMargins(10, 0, 10, 10)
         main_layout.addWidget(self.get_header())
         self.content_layout = QStackedLayout()
         content_widget = QWidget()
@@ -43,7 +45,7 @@ class MainWindow(QMainWindow):
         main_layout_widget.setLayout(main_layout)
         self.add_views()
         self.setCentralWidget(main_layout_widget)
-        
+
     def add_views(self):
         content_layout = self.content_layout
         content_layout.addWidget(MainView(navigate_to=self.navigate_to))
@@ -52,16 +54,21 @@ class MainWindow(QMainWindow):
         content_layout.addWidget(ShotsMainMenu())
         content_layout.addWidget(UtilsMain())
         self.content_layout.setCurrentIndex(1)
-        
+
     def get_header(self) -> QWidget:
         header_layout = QHBoxLayout()
-        
+
         header_layout.setAlignment(Qt.AlignmentFlag.AlignRight)
         shaker_pixmap = QPixmap(current_directory + "/icons/shaker.png")
-        shaker_pixmap = shaker_pixmap.scaled(QSize(45,45), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+        shaker_pixmap = shaker_pixmap.scaled(
+            QSize(
+                45,
+                45),
+            Qt.AspectRatioMode.KeepAspectRatio,
+            Qt.TransformationMode.SmoothTransformation)
         pixmap_label = QLabel()
         pixmap_label.setPixmap(shaker_pixmap)
-        pixmap_label.setFixedSize(55,55)
+        pixmap_label.setFixedSize(55, 55)
         header_layout.addWidget(pixmap_label)
         title_label = QLabel("MixMaster")
         title_label.setFixedWidth(250)
@@ -77,11 +84,11 @@ class MainWindow(QMainWindow):
         header_layout.addSpacerItem(subheader_spacing_item)
         self.main_menu_button = MainMenuReturnButton(navigate_func=self.navigate_to)
         header_layout.addWidget(self.main_menu_button)
-        header_layout.addSpacerItem(QSpacerItem(30,5))
+        header_layout.addSpacerItem(QSpacerItem(30, 5))
         header_widget.setFixedHeight(90)
         header_widget.setStyleSheet("border-bottom: 2px solid black")
         return header_widget
-        
+
     def set_palette(self):
         pallette = QPalette()
         pallette.setColor(QPalette.ColorRole.Window, QColor(color_palette["white"]))
@@ -94,7 +101,7 @@ class MainWindow(QMainWindow):
         dlg = QDialog(self)
         dlg.setWindowTitle("HELLO!")
         dlg.exec()
-        
+
     def navigate_to(self, gui_view_enum):
         if (gui_view_enum == GuiConstants.GuiViews.MAIN_MENU):
             self.main_menu_button.setVisible(False)
@@ -107,7 +114,12 @@ class MainMenuReturnButton(QWidget):
     def __init__(self, navigate_func: Callable):
         super(MainMenuReturnButton, self).__init__()
         return_pixmap = QPixmap(current_directory + "/icons/house.png")
-        return_pixmap = return_pixmap.scaled(QSize(55,55), Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+        return_pixmap = return_pixmap.scaled(
+            QSize(
+                55,
+                55),
+            Qt.AspectRatioMode.KeepAspectRatio,
+            Qt.TransformationMode.SmoothTransformation)
         sizePolicy = self.sizePolicy()
         sizePolicy.setRetainSizeWhenHidden(True)
         self.setSizePolicy(sizePolicy)
@@ -119,7 +131,7 @@ class MainMenuReturnButton(QWidget):
         default_layout.setAlignment(Qt.AlignmentFlag.AlignRight)
         default_layout.addWidget(self.return_label)
         self.setLayout(default_layout)
-        
+
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
             self.navigate_func(GuiConstants.GuiViews.MAIN_MENU)
