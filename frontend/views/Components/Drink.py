@@ -331,7 +331,7 @@ class DetailedDrinkView(QWidget):
     def add_submit_button(self):
         submit_button = MakeMeADrinkButton(
             on_click=lambda: CocktailMachine.pour_cocktail(
-                self.cocktail.name + "TEST"))
+                self.cocktail.name))
         submit_button.setContentsMargins(20, 0, 0, 0)
         self.main_layout.addWidget(submit_button, 11, 6, 2, 4)
 

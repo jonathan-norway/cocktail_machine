@@ -1,21 +1,97 @@
 {
-  "sparkling water": 300,
-  "orange juice": 100,
-  "tonic": 600,
-  "lemon juice": 300,
-  "cranberry juice": 300,
-  "lime juice": 350,
-  "cola": 1000,
-  "apple juice": 300,
-  "tomato juice": 500,
-  "ginger beer": 500,
-  "coconut milk": 400,
-  "simple syrup": 1000,
-  "basil": 20,
-  "mint": 20,
-  "kahlua": 300,
-  "absinth": 150,
-  "lillet blanc": 300,
-  "olive": 20,
-  "vermouth": 300
+  "sparkling water": {
+    "amount": 300,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "orange juice": {
+    "amount": 1000,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "tonic": {
+    "amount": 600,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "lemon juice": {
+    "amount": 300,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "cranberry juice": {
+    "amount": 300,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "lime juice": {
+    "amount": 350,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "cola": {
+    "amount": 1000,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "apple juice": {
+    "amount": 300,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "tomato juice": {
+    "amount": 500,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "ginger beer": {
+    "amount": 500,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "coconut milk": {
+    "amount": 400,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "simple syrup": {
+    "amount": 100,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "basil": {
+    "amount": 20,
+    "date_added": "2023-10-12",
+    "unit": "pcs"
+  },
+  "mint": {
+    "amount": 20,
+    "date_added": "2023-10-12",
+    "unit": "pcs"
+  },
+  "kahlua": {
+    "amount": 300,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "absinth": {
+    "amount": 150,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "lillet blanc": {
+    "amount": 300,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "olive": {
+    "amount": 20,
+    "date_added": "2023-10-12",
+    "unit": "pcs"
+  },
+  "vermouth": {
+    "amount": 300,
+    "date_added": "2023-10-12",
+    "unit": "mL"
+  }
 }

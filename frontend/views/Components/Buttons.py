@@ -43,6 +43,10 @@ class PreviousButton(QPushButton):
         self.setEnabled(False)
         self.setVisible(False)
 
+    def paintEvent(self, event):
+        super().paintEvent(event)
+        self.setGraphicsEffect(None)
+
 
 class MakeMeADrinkButton(QFrame):
     def __init__(self, on_click: Callable):
@@ -63,4 +67,5 @@ class MakeMeADrinkButton(QFrame):
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
             print("CLICKED ON MAKE-ME-A-DRINK")
-            self.on_click()
+            res = self.on_click()
+            print(f"{res=}")

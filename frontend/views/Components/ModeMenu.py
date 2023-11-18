@@ -14,7 +14,6 @@ class ModeMenuLayout(QHBoxLayout):
         super(ModeMenuLayout, self).__init__()
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setSpacing(20)
-    
 
 
 class MenuModeCard(QFrame):
@@ -28,7 +27,7 @@ class MenuModeCard(QFrame):
         super(MenuModeCard, self).__init__()
         layout = QVBoxLayout()
         self.setLayout(layout)
-        layout.setAlignment(Qt.AlignmentFlag.AlignTop|Qt.AlignmentFlag.AlignHCenter)
+        layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
         self.on_click = on_click
 
         title_label = QLabel(title)
@@ -36,9 +35,8 @@ class MenuModeCard(QFrame):
         title_font = title_label.font()
         title_font.setPointSize(22)
         title_label.setFont(title_font)
-        title_label.setContentsMargins(0,15,0,20)
+        title_label.setContentsMargins(0, 15, 0, 20)
         layout.addWidget(title_label)
-
 
         icon_label = QLabel()
         icon_pixmap = QPixmap(icon_path)
@@ -58,10 +56,9 @@ class MenuModeCard(QFrame):
         description_label.setWordWrap(True)
         description_label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         description_label.setFixedHeight(100)
-        description_label.setContentsMargins(10,10,10,0)
+        description_label.setContentsMargins(10, 10, 10, 0)
         layout.addWidget(description_label)
-        
-        
+
         self.setFrameStyle(1)
         self.setLineWidth(1)
         self.setFixedSize(QSize(290, 340))
@@ -69,4 +66,3 @@ class MenuModeCard(QFrame):
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
             self.on_click()
-
