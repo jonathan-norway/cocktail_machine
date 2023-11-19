@@ -17,10 +17,10 @@ class NavCard(QPushButton):
             self.setIcon(icon)
             self.setIconSize(icon.actualSize(QSize(64, 64)))
         font = self.font()
-        font.setPointSize(22)
+        font.setPointSize(26)
         font.setCapitalization(QFont.Capitalization.AllUppercase)
         self.setFont(font)
-        self.setFixedHeight(220)
+        self.setFixedHeight(180)
         self.clicked.connect(lambda: on_clicked())
         self.setStyleSheet("""
       QPushButton {
