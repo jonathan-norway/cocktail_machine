@@ -21,7 +21,7 @@ class MainView(QWidget):
         vertical_layout = QVBoxLayout()
 
         horizontal_layout_top = QHBoxLayout()
-        horizontal_layout_top.setSpacing(15)
+        horizontal_layout_top.setSpacing(10)
         horizontal_layout_top.addWidget(
             NavCard(
                 "Drink Menu",
@@ -38,7 +38,7 @@ class MainView(QWidget):
                 "/icons/bottles.png"))
 
         horizontal_layout_bottom = QHBoxLayout()
-        horizontal_layout_bottom.setSpacing(15)
+        horizontal_layout_bottom.setSpacing(10)
         horizontal_layout_bottom.addWidget(
             NavCard(
                 "Shots",
