@@ -30,8 +30,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("MixMaster")
         self.resize(GuiConstants.MAX_WIDTH, GuiConstants.MAX_HEIGHT)
         if platform.system() != "Windows":
-            # self.showFullScreen()
-            print("SHOULD BE FULLSCREEN SOON")
+            self.showFullScreen()
+            # print("SHOULD BE FULLSCREEN SOON")
         # self.setFixedSize(GuiConstants.MAX_WIDTH, GuiConstants.MAX_HEIGHT)
         self.set_palette()
 
@@ -44,7 +44,7 @@ class MainWindow(QMainWindow):
         self.content_layout = QStackedLayout()
         content_widget = QWidget()
         content_widget.setLayout(self.content_layout)
-        content_widget.setFixedHeight(550)
+        content_widget.setFixedHeight(450)
         main_layout.addWidget(content_widget)
         main_layout_widget = QWidget()
         main_layout_widget.setLayout(main_layout)
