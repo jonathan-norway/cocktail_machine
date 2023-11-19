@@ -19,6 +19,7 @@ color_palette = {
     "blue": "#05A3AD"
 }
 current_directory = os.path.dirname(__file__)
+import platform
 
 
 class MainWindow(QMainWindow):
@@ -28,8 +29,11 @@ class MainWindow(QMainWindow):
         QFontDatabase.addApplicationFont(current_directory + "/roboto-regular.ttf")
         self.setWindowTitle("MixMaster")
         self.resize(GuiConstants.MAX_WIDTH, GuiConstants.MAX_HEIGHT)
+        if platform.system() != "Windows":
+            self.showFullScreen()
         # self.setFixedSize(GuiConstants.MAX_WIDTH, GuiConstants.MAX_HEIGHT)
         self.set_palette()
+
         self.setup_main_window()
 
     def setup_main_window(self):
