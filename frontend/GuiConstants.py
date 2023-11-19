@@ -5,7 +5,7 @@ color_palette = {
     "black": "#231F20", "white": "#F2F1E6", "blue": "#05A3AD", "button-color": "#0095f"
 }
 MAX_WIDTH = 1000
-MAX_HEIGHT = 500
+MAX_HEIGHT = 450
 current_directory = os.path.dirname(__file__)
 
 
