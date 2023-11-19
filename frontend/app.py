@@ -30,7 +30,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("MixMaster")
         self.resize(GuiConstants.MAX_WIDTH, GuiConstants.MAX_HEIGHT)
         if platform.system() != "Windows":
-            self.showFullScreen()
+            # self.showFullScreen()
+            print("SHOULD BE FULLSCREEN SOON")
         # self.setFixedSize(GuiConstants.MAX_WIDTH, GuiConstants.MAX_HEIGHT)
         self.set_palette()
 
