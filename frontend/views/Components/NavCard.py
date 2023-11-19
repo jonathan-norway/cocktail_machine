@@ -20,7 +20,7 @@ class NavCard(QPushButton):
         font.setPointSize(26)
         font.setCapitalization(QFont.Capitalization.AllUppercase)
         self.setFont(font)
-        self.setFixedHeight(180)
+        self.setFixedHeight(200)
         self.clicked.connect(lambda: on_clicked())
         self.setStyleSheet("""
       QPushButton {
