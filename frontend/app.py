@@ -39,7 +39,7 @@ class MainWindow(QMainWindow):
 
     def setup_main_window(self):
         main_layout = QVBoxLayout()
-        main_layout.setContentsMargins(10, 0, 10, 10)
+        main_layout.setContentsMargins(5, 0, 10, 5)
         main_layout.addWidget(self.get_header())
         self.content_layout = QStackedLayout()
         content_widget = QWidget()
@@ -90,7 +90,7 @@ class MainWindow(QMainWindow):
         self.main_menu_button = MainMenuReturnButton(navigate_func=self.navigate_to)
         header_layout.addWidget(self.main_menu_button)
         header_layout.addSpacerItem(QSpacerItem(30, 5))
-        header_widget.setFixedHeight(90)
+        header_widget.setFixedHeight(80)
         header_widget.setStyleSheet("border-bottom: 2px solid black")
         return header_widget
 
