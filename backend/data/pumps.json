@@ -1,72 +1,82 @@
 {
-  "pump1": {
-    "tube_volume": 500,
-    "internal": true,
-    "contains": "vodka",
+  "pump0": {
+    "amount": 700,
     "pump_code": "ar0-p0",
-    "amount": 700
+    "tube_volume": 500,
+    "contains": "vodka",
+    "internal": true,
+    "date_added": "2023-11-19"
+  },
+  "pump1": {
+    "amount": 1000,
+    "pump_code": "ar0-p1",
+    "tube_volume": 500,
+    "contains": "cointreu",
+    "internal": true,
+    "date_added": "2023-11-19"
   },
   "pump2": {
+    "amount": 1200,
+    "pump_code": "ar0-p2",
     "tube_volume": 500,
+    "contains": "whiskey",
     "internal": true,
-    "contains": "cointreu",
-    "pump_code": "ar0-p1",
-    "amount": 1000
+    "date_added": "2023-11-19"
   },
   "pump3": {
+    "amount": 500,
+    "pump_code": "ar0-p3",
     "tube_volume": 500,
+    "contains": "tequila",
     "internal": true,
-    "contains": "whiskey",
-    "pump_code": "ar0-p2",
-    "amount": 1200
+    "date_added": "2023-11-19"
   },
   "pump4": {
+    "amount": 0,
+    "pump_code": "ar0-p4",
     "tube_volume": 500,
-    "internal": true,
-    "contains": "tequila",
-    "pump_code": "ar0-p3",
-    "amount": 500
+    "contains": "",
+    "internal": false,
+    "date_added": "2023-11-19"
   },
   "pump5": {
+    "amount": 1000,
+    "pump_code": "ar1-p0",
     "tube_volume": 500,
-    "internal": false,
-    "contains": "",
-    "pump_code": "ar0-p4",
-    "amount": 1000
+    "contains": "akevit",
+    "internal": true,
+    "date_added": "2023-11-19"
   },
   "pump6": {
+    "amount": 1000,
+    "pump_code": "ar1-p1",
     "tube_volume": 500,
+    "contains": "gin",
     "internal": true,
-    "contains": "akevit",
-    "pump_code": "ar1-p0",
-    "amount": 1000
+    "date_added": "2023-11-19"
   },
   "pump7": {
+    "amount": 1000,
+    "pump_code": "ar1-p2",
     "tube_volume": 500,
+    "contains": "rum",
     "internal": true,
-    "contains": "gin",
-    "pump_code": "ar1-p1",
-    "amount": 1000
+    "date_added": "2023-11-19"
   },
   "pump8": {
+    "amount": 0,
+    "pump_code": "ar1-p3",
     "tube_volume": 500,
-    "internal": true,
-    "contains": "rum",
-    "pump_code": "ar1-p2",
-    "amount": 1000
+    "contains": "",
+    "internal": false,
+    "date_added": "2023-11-19"
   },
   "pump9": {
-    "tube_volume": 500,
-    "internal": false,
-    "contains": "",
-    "pump_code": "ar1-p3",
-    "amount": 1000
-  },
-  "pump10": {
-    "tube_volume": 500,
-    "internal": false,
-    "contains": "",
+    "amount": 0,
     "pump_code": "ar1-p4",
-    "amount": 1000
+    "tube_volume": 500,
+    "contains": "",
+    "internal": false,
+    "date_added": "2023-11-19"
   }
 }

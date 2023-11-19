@@ -6,6 +6,8 @@ from .pump import Pump
 import logging
 from .datatypes import CocktailRecipe, ExternalIngredient
 from typing import List, Dict
+from dataclasses import asdict
+import uuid
 
 
 logging.basicConfig(
@@ -20,6 +22,7 @@ logger = logging.getLogger(__name__)
 current_directory = Path(__file__).parent
 
 PUMPS_FILE = current_directory / "data/pumps.json"
+PUMPS_FILE2 = current_directory / "data/pumps2.json"
 COCKTAIL_RECIPES_FILE = current_directory / "data/cocktails.json"
 STATISTICS_FILE = current_directory / "data/statistics.json"
 BASE_ALCOHOLS_FILE = current_directory / "data/base_alcohols.json"
@@ -48,11 +51,13 @@ class CocktailMachineClass():
         self.load_statistics()
 
     def load_pumps(self):
-        self.pumps_dict: Dict[str, Pump] = {}
+        self._pumps_dict: Dict[str, Pump] = {}
         temp_pumps_dict = CocktailMachineClass.read_file(PUMPS_FILE)
         for _, pump_data in temp_pumps_dict.items():
             pump = Pump(**pump_data)
-            self.pumps_dict[pump_data["contains"]] = pump
+            contains = pump_data["contains"] if pump_data[
+                "contains"] != "" else f"EMPTY_{uuid.uuid4()}"
+            self._pumps_dict[contains] = pump
 
     @staticmethod
     def read_file(file_path: str):
@@ -73,14 +78,14 @@ class CocktailMachineClass():
             cocktail_recipe: CocktailRecipe = self.get_cocktail_recipe(cocktail_name)
             # logger.debug("0")
             for ingredient, amount in cocktail_recipe.ingredients.items():
-                pump: Pump = self.pumps_dict.get(ingredient)
+                pump: Pump = self._pumps_dict.get(ingredient)
                 if pump is None:
                     self._check_enough_of_ingredient(ingredient, amount)
                 else:
                     pump.assert_enough_amount(amount)
                 logger.warn("yega")
             for ingredient, amount in cocktail_recipe.ingredients.items():
-                pump = self.pumps_dict.get(ingredient)
+                pump = self._pumps_dict.get(ingredient)
                 if pump is None:
                     logger.info(
                         f"There is no pump for {ingredient}. It has to be added manually after...")
@@ -144,7 +149,7 @@ class CocktailMachineClass():
     def check_if_have_all_ingredients(self, ingredients: dict[str, str]) -> bool:
         has_all_ingredients = True
         for ingredient, amount in ingredients.items():
-            if not (self.pumps_dict.get(ingredient) or self.ingredients_dict.get(ingredient)):
+            if not (self._pumps_dict.get(ingredient) or self.ingredients_dict.get(ingredient)):
                 logger.warn(f"\tDoes not have required ingredient '{ingredient}'")
                 has_all_ingredients = False
 
@@ -158,14 +163,12 @@ class CocktailMachineClass():
             json.dump(statistics, f)
         self.statistics = statistics
 
-    def update_pumps(self) -> None:
-        pumps = self.pumps_dict
-        return
+    def _save_pumps(self) -> None:
         temp_dict = {}
-        # for bottle, pump in pumps.items():
-        #    temp_dict[bottle] = pump.as_dict()
-        with open(PUMPS_FILE, mode="wt", encoding="utf-8") as f:
-            json.dump(pumps, f)
+        for i, pump in enumerate(self._pumps_dict.values()):
+            temp_dict[f"pump{i}"] = asdict(pump)
+        with open(PUMPS_FILE2, mode="wt", encoding="utf-8") as f:
+            json.dump(temp_dict, f)
 
     def load_statistics(self):
         with open(STATISTICS_FILE, mode="rt", encoding="utf-8") as f:
@@ -173,7 +176,7 @@ class CocktailMachineClass():
         self.statistics = statistics_from_file if statistics_from_file else {}
 
     def _test_i2c(self, alcohol_name: str, milliseconds: int) -> None:
-        pump = self.pumps_dict[alcohol_name]
+        pump = self._pumps_dict[alcohol_name]
         pump._send_pump_event_with_milliseconds(milliseconds)
 
     def get_ingredients(self) -> List[ExternalIngredient]:
@@ -191,6 +194,16 @@ class CocktailMachineClass():
             logger.warning(f"Tried removing a non existing ingredient - {ingredient_name}")
             return
         del self.ingredients_dict[ingredient_name]
+
+    def get_pumps(self):
+        return [pump for pump in self._pumps_dict.values()]
+
+    def update_pump(self, updated_pump: Pump):
+        logger.info(f"Updating pump '{updated_pump}'")
+        old_pump_key = [key for key, pump in self._pumps_dict.items() if pump.pump_code ==
+                        updated_pump.pump_code][0]
+        self._pumps_dict[old_pump_key] = updated_pump
+        self._save_pumps()
 
 
 CocktailMachine = CocktailMachineSingleton.get_instance()

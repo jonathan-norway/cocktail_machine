@@ -9,8 +9,9 @@ from PyQt6.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
                              QLabel, QPushButton, QSizePolicy, QSpacerItem,
                              QStackedLayout, QVBoxLayout, QWidget)
 
-from ..Components import MainMenu, MenuModeCard, ModeMenuLayout, SecondHeader
-from .InventoryTable import InventoryTable
+from ..Components import MainMenu, MenuModeCard, ModeMenuLayout, SecondHeader, InventoryTable
+from .PumpTable import PumpTable
+
 current_directory = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 
@@ -26,6 +27,7 @@ class UtilsMain(MainMenu):
         super(UtilsMain, self).__init__("Utilities")
         self.add_mode(self.modes_menu())
         self.add_mode(self.update_ingredients_mode())
+        self.add_mode(self.update_alcohols_mode())
 
     def modes_menu(self):
         layout = ModeMenuLayout()
@@ -62,3 +64,6 @@ class UtilsMain(MainMenu):
 
     def update_ingredients_mode(self):
         return InventoryTable()
+
+    def update_alcohols_mode(self):
+        return PumpTable()

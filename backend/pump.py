@@ -7,7 +7,7 @@ import re
 #                   filename="pump.log", encoding="utf-8", level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-
+from datetime import datetime
 from .arduino_service import ArduinoService
 
 
@@ -20,14 +20,15 @@ class Pump:
     pump_code: str = field()
     tube_volume: int = field()
     contains: str = field(default="")
-    internal: str = field(default=False)
-    confirm_flush_internal: bool = field(default=False)
+    internal: bool = field(default=False)
+    date_added: str = field(default=datetime.now().date().strftime("%Y-%m-%d"))
 
     def __post_init__(self):
         [arduino_id, pump_id] = self.pump_code.split("-")
         self.pump_number: int = int(re.findall(r"(\d+)", pump_id)[0])
         self.i2c_addr: int = ArduinoService.ArduinoToAddressDict[re.findall(
             r"(\d+)", arduino_id)[0]]
+        self.confirm_flush_internal: bool = field(default=False)
 
     def pour_amount(self, amount_to_pour: int):
         assert self.amount >= amount_to_pour

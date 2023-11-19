@@ -116,26 +116,24 @@ class TableModel(QAbstractTableModel):
         self.endResetModel()
 
 
-class InventoryTable(QWidget):
+class InventoryTable(QTableView):
     def __init__(self):
         super(InventoryTable, self).__init__()
-
-        self.table = QTableView()
-        self.table.setSortingEnabled(True)
-        self.table.sortByColumn(0, Qt.SortOrder.DescendingOrder)
+        self.setSortingEnabled(True)
+        self.sortByColumn(0, Qt.SortOrder.DescendingOrder)
         data = CocktailMachine.get_ingredients()
 
         self.model = TableModel(data)
-        self.table.setModel(self.model)
+        self.setModel(self.model)
 
         button_delegate = ButtonDelegate(self)
         button_delegate.removeIngredient.connect(self._remove_ingredient)
         button_delegate.addIngredient.connect(self._add_ingredient)
-        self.table.setItemDelegateForColumn(4, button_delegate)
-        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+        self.setItemDelegateForColumn(4, button_delegate)
+        self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
 
-        self.setLayout(QVBoxLayout())
-        self.layout().addWidget(self.table)
+        # self.setLayout(QVBoxLayout())
+        # self.layout().addWidget(self.table)
 
     def _remove_ingredient(self, ingredient_to_remove: str) -> None:
         CocktailMachine.remove_ingredient(ingredient_to_remove)
