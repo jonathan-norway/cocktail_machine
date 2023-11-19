@@ -20,27 +20,27 @@ class GuiViews(Enum):
 base_alcohols = [
     {
         "name": "vodka",
-        "description": "Distilled primarily from high-starch plants, vodka typically isn't very flavorful. Potatoes are the most common base, though one can also use rye, corn, grains, or beets.",
+        "description": "Flavorless and distilled from potatoes.",
         "icon": current_directory + "/icons/vodka.png",
     },
     {
         "name": "gin",
-        "description": "Gin is distilled from grain. Unflavored gin typically has a dry flavor with hints of juniper, citrus, or even malt wine, depending on how it was made. Many gins may also taste slightly sweet and can be flavored with a range of different spices or fruits.",
+        "description": "Dry and herby, and distilled from grain.",
         "icon": current_directory + "/icons/gin.png",
     },
     {
         "name": "rum",
-        "description": "Rum is typically distilled from some type of sugar, commonly either molasses or sugar cane. It tastes much sweeter than most other distilled spirits as a result.",
+        "description": "Sweet and distilled from sugar.",
         "icon": current_directory + "/icons/rum.png",
     },
     {
         "name": "tequila",
-        "description": "Made from fermented agave, tequila tastes somewhat sweet, earthy, and piquant, though this varies depending on where the agave was grown. Tequila has a reputation for being on the more robust end as spirits go.",
+        "description": "Robust flavor and made from fermented agave",
         "icon": current_directory + "/icons/tequila.png",
     },
     {
         "name": "whiskey",
-        "description": "Brewed by distilling malted grains such as rye, corn, wheat, or barley, whiskey is among the most diverse spirits on the list, with a distinctive flavor that depends mainly on where it's brewed",
+        "description": "Smooth and warm, and distilled from malted grains.",
         "icon": current_directory + "/icons/whiskey.png",
     },
 ]

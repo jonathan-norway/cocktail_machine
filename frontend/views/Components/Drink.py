@@ -298,14 +298,15 @@ class DetailedDrinkView(QWidget):
         self.main_layout.addWidget(pixmap_label, 9, 1, 4, 3)
 
     def add_title(self):
-        cocktail_name = self.cocktail.name
-        title_label = QLabel(text=cocktail_name)
-        font = title_label.font()
-        font.setPointSize(22)
-        font.setCapitalization(QFont.Capitalization.Capitalize)
-        font.setUnderline(True)
-        title_label.setFont(font)
-        self.main_layout.addWidget(title_label, 0, 6, 1, 5)
+        # cocktail_name = self.cocktail.name
+        # title_label = QLabel(text=cocktail_name)
+        # font = title_label.font()
+        # font.setPointSize(22)
+        # font.setCapitalization(QFont.Capitalization.Capitalize)
+        # font.setUnderline(True)
+        # title_label.setFont(font)
+        # self.main_layout.addWidget(title_label, 0, 6, 1, 5)
+        pass
 
     def add_description(self):
         cocktail_description = self.cocktail.description

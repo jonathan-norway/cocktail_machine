@@ -61,7 +61,7 @@ class DrinkMenuView(MainMenu):
                 title="Base Alcohol",
                 icon_path=current_directory + "/icons/bottles.png",
                 description="Select a drink based on a specific base alcohol, or try a new one!",
-                on_click=lambda: self.inner_navigate(DrinkMenuModes.BASE_ALCOHOL),
+                on_click=lambda: self.inner_navigate(DrinkMenuModes.BASE_ALCOHOL, "Base Alcohol"),
             )
         )
         layout.addWidget(
@@ -69,7 +69,7 @@ class DrinkMenuView(MainMenu):
                 title="Popularity",
                 icon_path=current_directory + "/icons/popularity.png",
                 description="Select a drink based on popularity. You cannot go wrong with a fan favorite!",
-                on_click=lambda: self.inner_navigate(DrinkMenuModes.POPULARITY),
+                on_click=lambda: self.inner_navigate(DrinkMenuModes.POPULARITY, "Popularity"),
             )
         )
         layout.addWidget(
@@ -77,7 +77,7 @@ class DrinkMenuView(MainMenu):
                 title="Mood",
                 icon_path=current_directory + "/icons/season.png",
                 description="Select a drink based on your mood, season, or planet orientation.",
-                on_click=lambda: self.inner_navigate(DrinkMenuModes.MOOD),
+                on_click=lambda: self.inner_navigate(DrinkMenuModes.MOOD, "Mood"),
             )
         )
         widget = QWidget()
@@ -87,7 +87,7 @@ class DrinkMenuView(MainMenu):
     def get_and_display_detailed_by_name(self, cocktail_name: str):
         drink_recipe = CocktailMachine.get_cocktail_recipe_by_name(cocktail_name)
         self.detailed_display.set_new_drink(cocktail=drink_recipe)
-        self.inner_navigate(DrinkMenuModes.DISPLAY_DETAILED)
+        self.inner_navigate(DrinkMenuModes.DISPLAY_DETAILED, new_title=cocktail_name.capitalize())
 
     def get_and_display_drinks_by_base(self, base_alcohol: str):
         all_drinks_json_list = CocktailMachine.get_cocktail_recipes_by_base(base_alcohol)
@@ -105,17 +105,19 @@ class DrinkMenuView(MainMenu):
             )
             selected_drinks_cards.append(cocktail_card)
 
-        self.update_drink_list_and_show_display_mode(selected_drinks_cards)
+        self.update_drink_list_and_show_display_mode(
+            new_title=f"Base Alcohol - {base_alcohol.capitalize()}", drink_card_list=selected_drinks_cards)
 
-    def update_drink_list_and_show_display_mode(self, drink_card_list: list):
+    def update_drink_list_and_show_display_mode(self, new_title: str, drink_card_list: list):
         self.drink_list_view.set_items(drink_card_list)
-        self.inner_navigate(DrinkMenuModes.DISPLAY_LIST)
+        self.inner_navigate(DrinkMenuModes.DISPLAY_LIST, new_title=new_title)
 
-    def inner_navigate(self, target_page: DrinkMenuModes):
+    def inner_navigate(self, target_page: DrinkMenuModes, new_title: str):
         origin_page_index = self.sub_menu_layout.currentIndex()
         self.sub_menu_layout.setCurrentIndex(target_page.value)
-        self.subheader.previous_button.update_nav(
+        self.subheader.add_navigater(
             lambda: self.sub_menu_layout.setCurrentIndex(origin_page_index))
+        SecondHeader.update_header(title=new_title)
 
     def base_alcohol_mode(self):
         self.card_list = CardList()
@@ -164,14 +166,16 @@ class Card(QFrame):
         icon_label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.main_layout.addWidget(icon_label)
 
-        description_label = QLabel(description if len(description) < 100 else description[0:100])
+        description_label = QLabel(description)
         description_label.setWordWrap(True)
         description_label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         description_font = description_label.font()
         description_font.setPointSize(14)
         description_label.setFont(description_font)
+        description_label.setFixedWidth(250)
         self.main_layout.addWidget(description_label)
-        self.setFixedSize(QSize(275, 200))
+        description_label.setStyleSheet("QLabel {border: 2px solid red}")
+        self.setFixedSize(QSize(290, 160))
         # self.setStyleSheet("border: 2px solid red;")
         self.setFrameStyle(1)
         self.setLineWidth(1)

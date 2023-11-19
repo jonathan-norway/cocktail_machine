@@ -10,12 +10,12 @@ from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
 from .Buttons import PreviousButton
 
 
-class SecondHeader(QWidget):
-    def __init__(self, title: str):
-        super(SecondHeader, self).__init__()
+class _SecondHeader(QWidget):
+    def __init__(self, title: str = ""):
+        super(_SecondHeader, self).__init__()
         subheader_layout = QHBoxLayout()
         subheader_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        self.previous_button = PreviousButton()
+        self._previous_button = PreviousButton()
 
         self.header_icon_label = QLabel()
 
@@ -35,7 +35,7 @@ class SecondHeader(QWidget):
         main_label_widget.setLayout(main_label_layout)
         subheader_layout.addSpacerItem(QSpacerItem(15, 5))
         subheader_layout.addWidget(
-            self.previous_button, Qt.AlignmentFlag.AlignLeft
+            self._previous_button, Qt.AlignmentFlag.AlignLeft
         )
         subheader_layout.addWidget(main_label_widget, Qt.AlignmentFlag.AlignCenter)
         subheader_layout.addItem(subheader_spacing_item)
@@ -52,6 +52,7 @@ class SecondHeader(QWidget):
         if title:
             self.header_title.setText(title)
         if icon_path:
+            print("IT IS CALLED!!! Components/Headers.py:55")
             subheader_pixmap = QPixmap(icon_path)
             subheader_pixmap = subheader_pixmap.scaled(
                 QSize(36, 36),
@@ -59,4 +60,13 @@ class SecondHeader(QWidget):
                 Qt.TransformationMode.SmoothTransformation,
             )
             self.header_icon_label.setPixmap(subheader_pixmap)
-            self.previous_button.update(navigate_func, navigate_history)
+            self._previous_button.update(navigate_func, navigate_history)
+
+    def add_navigater(self, navigate_func: Callable[[None], None]) -> None:
+        old_title = self.header_title.text()
+        self._previous_button.update_nav(
+            navigate_func, lambda: self.update_header(
+                old_title))
+
+
+SecondHeader = _SecondHeader()

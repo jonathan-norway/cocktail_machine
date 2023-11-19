@@ -1,3 +1,11 @@
-2023-11-18 23:07:53,061 - backend.cocktail_machine - WARNING - Created new instance of cocktail machine
-2023-11-18 23:11:31,941 - backend.cocktail_machine - DEBUG - Got cocktails by base (vodka)
-2023-11-18 23:11:31,941 - backend.cocktail_machine - DEBUG - Got all cocktails
+2023-11-19 22:09:01,802 - backend.cocktail_machine - WARNING - Created new instance of cocktail machine
+2023-11-19 22:09:03,480 - backend.cocktail_machine - DEBUG - Got cocktails by base (vodka)
+2023-11-19 22:09:03,480 - backend.cocktail_machine - DEBUG - Got all cocktails
+2023-11-19 22:09:06,784 - backend.cocktail_machine - DEBUG - Got cocktails by base (vodka)
+2023-11-19 22:09:06,784 - backend.cocktail_machine - DEBUG - Got all cocktails
+2023-11-19 22:09:07,172 - backend.cocktail_machine - DEBUG - Got cocktail by name (cosmopolitan)
+2023-11-19 22:09:07,172 - backend.cocktail_machine - DEBUG - Got all cocktails
+2023-11-19 22:09:08,753 - backend.cocktail_machine - DEBUG - Got cocktail by name (cosmopolitan)
+2023-11-19 22:09:08,753 - backend.cocktail_machine - DEBUG - Got all cocktails
+2023-11-19 22:09:10,958 - backend.cocktail_machine - DEBUG - Got cocktails by base (vodka)
+2023-11-19 22:09:10,958 - backend.cocktail_machine - DEBUG - Got all cocktails

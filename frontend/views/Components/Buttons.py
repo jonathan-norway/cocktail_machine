@@ -16,7 +16,7 @@ class PreviousButton(QPushButton):
         return_icon = QIcon(current_directory + "/icons/return.png")
         return_icon.actualSize(QSize(36, 36))
         super(PreviousButton, self).__init__(icon=return_icon)
-        self.navigation_history: list = []
+        self.navigation_history: list[(Callable, Callable)] = []
         self.setFixedSize(130, 30)
         button_size_policy = self.sizePolicy()
         button_size_policy.setRetainSizeWhenHidden(True)
@@ -26,15 +26,16 @@ class PreviousButton(QPushButton):
         self.clicked.connect(self._go_back)
 
     def _go_back(self):
-        navigation_func = self.navigation_history.pop()
+        (navigation_func, title_func) = self.navigation_history.pop()
         navigation_func()
+        title_func()
         if not (self.navigation_history):
             # self.setVisible(False)
             # self.setEnabled(False)
             self.setHidden(True)
 
-    def update_nav(self, navigate_func: Callable):
-        self.navigation_history.append(navigate_func)
+    def update_nav(self, navigate_func: Callable, title_func: Callable):
+        self.navigation_history.append((navigate_func, title_func))
         self.setVisible(True)
         self.setEnabled(True)
 

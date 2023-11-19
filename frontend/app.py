@@ -2,14 +2,16 @@ import os
 import sys
 from pathlib import Path
 from typing import Callable
+from PyQt5.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
+                             QMainWindow, QPushButton, QSizePolicy,
+                             QSpacerItem, QStackedLayout, QVBoxLayout, QWidget)
+app = QApplication(sys.argv)
 
 import GuiConstants
 from PIL import Image
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QColor, QFont, QFontDatabase, QIcon, QPalette, QPixmap
-from PyQt5.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
-                             QMainWindow, QPushButton, QSizePolicy,
-                             QSpacerItem, QStackedLayout, QVBoxLayout, QWidget)
+
 from views import CustomDrinkMenu, DrinkMenuView, ShotsMainMenu, UtilsMain
 from views.MainMenu import MainView
 
@@ -141,8 +143,6 @@ class MainMenuReturnButton(QWidget):
         if event.button() == Qt.MouseButton.LeftButton:
             self.navigate_func(GuiConstants.GuiViews.MAIN_MENU)
 
-
-app = QApplication(sys.argv)
 
 window = MainWindow()
 window.show()
