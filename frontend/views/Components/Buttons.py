@@ -3,9 +3,9 @@ from enum import Enum, auto
 from typing import Callable
 
 from GuiConstants import GuiViews, base_alcohols, color_palette
-from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtGui import QColor, QFont, QIcon, QPixmap
-from PyQt6.QtWidgets import QPushButton, QFrame, QHBoxLayout, QLabel
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QColor, QFont, QIcon, QPixmap
+from PyQt5.QtWidgets import QPushButton, QFrame, QHBoxLayout, QLabel
 from .Labels import CenterQLabel
 
 current_directory = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))

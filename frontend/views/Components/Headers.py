@@ -1,9 +1,9 @@
 
 from typing import Callable
 
-from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtGui import QColor, QFont, QIcon, QPixmap
-from PyQt6.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QColor, QFont, QIcon, QPixmap
+from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
                              QLabel, QPushButton, QSizePolicy, QSpacerItem,
                              QStackedLayout, QVBoxLayout, QWidget)
 

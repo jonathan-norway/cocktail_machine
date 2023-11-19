@@ -4,9 +4,9 @@ from pathlib import Path
 from typing import Callable
 
 import qrcode
-from PyQt6.QtCore import QObjectCleanupHandler, QSize, Qt
-from PyQt6.QtGui import QColor, QFont, QIcon, QImage, QPixmap
-from PyQt6.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QGridLayout,
+from PyQt5.QtCore import QObjectCleanupHandler, QSize, Qt
+from PyQt5.QtGui import QColor, QFont, QIcon, QImage, QPixmap
+from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QGridLayout,
                              QHBoxLayout, QLabel, QListWidget, QListWidgetItem,
                              QPushButton, QSizePolicy, QSpacerItem,
                              QStackedLayout, QVBoxLayout, QWidget)

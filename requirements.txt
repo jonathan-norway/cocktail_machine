@@ -2,4 +2,4 @@ smbus2
 pygame
 qrcode
 pillow
-pyqt6
+PyQt5

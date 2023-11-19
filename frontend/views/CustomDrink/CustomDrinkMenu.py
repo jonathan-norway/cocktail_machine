@@ -1,6 +1,6 @@
 import os
 
-from PyQt6.QtWidgets import QLabel, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QLabel, QVBoxLayout, QWidget
 
 current_directory = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 

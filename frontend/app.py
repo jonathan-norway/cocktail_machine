@@ -5,9 +5,9 @@ from typing import Callable
 
 import GuiConstants
 from PIL import Image
-from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtGui import QColor, QFont, QFontDatabase, QIcon, QPalette, QPixmap
-from PyQt6.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QColor, QFont, QFontDatabase, QIcon, QPalette, QPixmap
+from PyQt5.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
                              QMainWindow, QPushButton, QSizePolicy,
                              QSpacerItem, QStackedLayout, QVBoxLayout, QWidget)
 from views import CustomDrinkMenu, DrinkMenuView, ShotsMainMenu, UtilsMain

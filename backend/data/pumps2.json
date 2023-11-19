@@ -1,0 +1,82 @@
+{
+  "pump0": {
+    "amount": "150",
+    "pump_code": "ar0-p0",
+    "tube_volume": 500,
+    "contains": "bourbon",
+    "internal": true,
+    "date_added": "2023-11-19"
+  },
+  "pump1": {
+    "amount": 1000,
+    "pump_code": "ar0-p1",
+    "tube_volume": 500,
+    "contains": "cointreu",
+    "internal": true,
+    "date_added": "2023-11-19"
+  },
+  "pump2": {
+    "amount": 1200,
+    "pump_code": "ar0-p2",
+    "tube_volume": 500,
+    "contains": "whiskey",
+    "internal": true,
+    "date_added": "2023-11-19"
+  },
+  "pump3": {
+    "amount": 500,
+    "pump_code": "ar0-p3",
+    "tube_volume": 500,
+    "contains": "tequila",
+    "internal": true,
+    "date_added": "2023-11-19"
+  },
+  "pump4": {
+    "amount": "700",
+    "pump_code": "ar0-p4",
+    "tube_volume": 500,
+    "contains": "cognac",
+    "internal": false,
+    "date_added": "2023-11-19"
+  },
+  "pump5": {
+    "amount": 1000,
+    "pump_code": "ar1-p0",
+    "tube_volume": 500,
+    "contains": "akevit",
+    "internal": true,
+    "date_added": "2023-11-19"
+  },
+  "pump6": {
+    "amount": 1000,
+    "pump_code": "ar1-p1",
+    "tube_volume": 500,
+    "contains": "gin",
+    "internal": true,
+    "date_added": "2023-11-19"
+  },
+  "pump7": {
+    "amount": 1000,
+    "pump_code": "ar1-p2",
+    "tube_volume": 500,
+    "contains": "rum",
+    "internal": true,
+    "date_added": "2023-11-19"
+  },
+  "pump8": {
+    "amount": "1000",
+    "pump_code": "ar1-p3",
+    "tube_volume": 500,
+    "contains": "aperol",
+    "internal": false,
+    "date_added": "2023-11-19"
+  },
+  "pump9": {
+    "amount": "500",
+    "pump_code": "ar1-p4",
+    "tube_volume": 500,
+    "contains": "stroh",
+    "internal": false,
+    "date_added": "2023-11-19"
+  }
+}

@@ -1,7 +1,7 @@
 
-from PyQt6.QtGui import QColor
-from PyQt6.QtCore import Qt, QAbstractTableModel, pyqtSignal
-from PyQt6.QtWidgets import QTableView, QStyledItemDelegate, QMainWindow, QMessageBox
+from PyQt5.QtGui import QColor
+from PyQt5.QtCore import Qt, QAbstractTableModel, pyqtSignal
+from PyQt5.QtWidgets import QTableView, QStyledItemDelegate, QMainWindow, QMessageBox
 from backend.cocktail_machine import CocktailMachine
 from backend.datatypes import ExternalIngredient, ValidIngredientUnits
 from typing import List

@@ -3,9 +3,9 @@ from enum import Enum, auto
 from typing import Callable
 
 from GuiConstants import GuiViews, base_alcohols, color_palette
-from PyQt6.QtCore import QSize, Qt, QTimer
-from PyQt6.QtGui import QColor, QFont, QIcon, QPixmap
-from PyQt6.QtWidgets import QPushButton, QFrame, QHBoxLayout, QLabel, QWidget, QVBoxLayout, QProgressDialog
+from PyQt5.QtCore import QSize, Qt, QTimer
+from PyQt5.QtGui import QColor, QFont, QIcon, QPixmap
+from PyQt5.QtWidgets import QPushButton, QFrame, QHBoxLayout, QLabel, QWidget, QVBoxLayout, QProgressDialog
 from .Labels import CenterQLabel
 
 
