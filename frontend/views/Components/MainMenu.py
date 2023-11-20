@@ -1,12 +1,12 @@
 from enum import Enum, auto
-from typing import Callable
+from typing import Callable, Union
 
 from GuiConstants import GuiViews, base_alcohols, color_palette
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QColor, QFont, QIcon, QPixmap
 from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
                              QLabel, QPushButton, QSizePolicy, QSpacerItem,
-                             QStackedLayout, QVBoxLayout, QWidget)
+                             QStackedLayout, QVBoxLayout, QWidget, QLayout)
 
 from .Headers import SecondHeader
 from .ModeMenu import ModeMenuLayout
@@ -37,4 +37,7 @@ class MainMenu(QWidget):
         self.setGraphicsEffect(shadow)
 
     def add_mode(self, mode: QWidget):
-        self.sub_menu_layout.addWidget(mode)
+        if isinstance(mode, QWidget):
+            self.sub_menu_layout.addWidget(mode)
+        else:
+            raise Exception("Cannot add mode that is not type QWidget")

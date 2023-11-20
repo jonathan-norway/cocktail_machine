@@ -8,12 +8,34 @@ from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
                              QLabel, QPushButton, QSizePolicy, QSpacerItem,
                              QStackedLayout, QVBoxLayout, QWidget)
 
+from typing import List
 
-class ModeMenuLayout(QHBoxLayout):
-    def __init__(self):
+
+class ModeMenuLayout(QVBoxLayout):
+    def __init__(self, max_per_row=3):
         super(ModeMenuLayout, self).__init__()
+        self._MAX_PER_ROW = max_per_row
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setSpacing(20)
+        self.horizontal_layouts: List[QHBoxLayout] = []
+        # self.addLayout(self.get_QHBoxLayout())
+
+    def addWidget(self, widget_to_add: QWidget):
+        was_added = False
+        for layout in self.horizontal_layouts:
+            if layout.count() >= self._MAX_PER_ROW:
+                continue
+            was_added = True
+            layout.addWidget(widget_to_add)
+        if not was_added:
+            temp_layout = self.get_QHBoxLayout()
+            temp_layout.addWidget(widget_to_add)
+
+    def get_QHBoxLayout(self):
+        temp_QHBox_Layout = QHBoxLayout()
+        self.horizontal_layouts.append(temp_QHBox_Layout)
+        self.addLayout(temp_QHBox_Layout)
+        return temp_QHBox_Layout
 
 
 class MenuModeCard(QFrame):

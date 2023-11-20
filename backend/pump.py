@@ -13,7 +13,7 @@ from .arduino_service import ArduinoService
 
 @dataclass
 class Pump:
-    ML_P_MS = 0.045
+    ML_P_MS = 0.0045
     # PUMP_STARTED = 65,
 
     amount: int = field()
