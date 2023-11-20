@@ -98,7 +98,8 @@ class UtilsMain(MainMenu):
     def trigger_software_update(self):
         print("PULL LATEST FROM GITHUB NOW!!")
         if platform.system() != "Windows":
-            command_to_run = "pkill -f MixMaster && git pull && MixMaster"
+            command_to_run = "pkill -f mixmaster && /home/jonathan-pi/startup.sh"
+            subprocess.call(command_to_run)
 
     def inner_navigate(self, to: UtilsModeMenu):
         previous_index = self.sub_menu_layout.currentIndex()
