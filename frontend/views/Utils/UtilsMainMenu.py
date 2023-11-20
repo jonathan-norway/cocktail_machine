@@ -99,7 +99,7 @@ class UtilsMain(MainMenu):
         print("PULL LATEST FROM GITHUB NOW!!")
         if platform.system() != "Windows":
             command_to_run = "pkill -f mixmaster && /home/jonathan-pi/startup.sh"
-            subprocess.call(command_to_run)
+            subprocess.call(command_to_run, shell=True)
 
     def inner_navigate(self, to: UtilsModeMenu):
         previous_index = self.sub_menu_layout.currentIndex()
