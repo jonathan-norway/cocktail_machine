@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Callable
 
 # sys.path.append(str(Path(__file__).parent.parent.resolve()) + "/GuiConstants.py")
-from GuiConstants import GuiViews, color_palette
+from frontend.GuiConstants import GuiViews, color_palette
 from PyQt5.QtCore import QSize
 from PyQt5.QtGui import QColor, QFont, QIcon, QPainter, QPixmap
 from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,

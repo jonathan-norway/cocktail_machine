@@ -1,4 +1,5 @@
 #!/bin/env bash
 
-pkill -f app.py
-cd /
+pkill -f mixmaster
+git pull origin main
+pip install -e .

@@ -2,7 +2,7 @@ import os
 from enum import Enum, auto
 from typing import Callable
 
-from GuiConstants import GuiViews, base_alcohols, color_palette
+
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QColor, QFont, QIcon, QPixmap
 from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
@@ -12,6 +12,8 @@ from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
 from ..Components import MainMenu, Card, ModeMenuLayout, SecondHeader, InventoryTable, Card, CardList
 from .PumpTable import PumpTable
 from .CalibrationTool import CalibrationTool
+import subprocess
+import platform
 
 current_directory = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
@@ -95,6 +97,8 @@ class UtilsMain(MainMenu):
 
     def trigger_software_update(self):
         print("PULL LATEST FROM GITHUB NOW!!")
+        if platform.system() != "Windows":
+            command_to_run = "pkill -f MixMaster && git pull && MixMaster"
 
     def inner_navigate(self, to: UtilsModeMenu):
         previous_index = self.sub_menu_layout.currentIndex()

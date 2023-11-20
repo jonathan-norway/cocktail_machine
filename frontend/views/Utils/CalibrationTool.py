@@ -35,7 +35,6 @@ class SliderWithLabel(QWidget):
         self.internalValueUpdate.emit(value)
 
     def update_internal_value(self, value: float):
-        print(f"{value=}")
         try:
             sanitized_value = float(value)
         except Exception as e:
