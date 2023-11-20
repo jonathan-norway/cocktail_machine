@@ -98,8 +98,13 @@ class UtilsMain(MainMenu):
     def trigger_software_update(self):
         print("PULL LATEST FROM GITHUB NOW!!")
         if platform.system() != "Windows":
-            command_to_run = "pkill -f mixmaster && /home/jonathan-pi/startup.sh"
+            print("ACTUALLY UPDATING!!")
+            command_to_run = "/usr/bin/pkill -f mixmaster && /home/jonathan-pi/startup.sh"
             subprocess.call(command_to_run, shell=True)
+            try:
+                subprocess.check_output(command_to_run, shell=True, stderr=subprocess.STDOUT)
+            except subprocess.CalledProcessError as e:
+                print(f"Error: {e.output.decode('utf-8')}")
 
     def inner_navigate(self, to: UtilsModeMenu):
         previous_index = self.sub_menu_layout.currentIndex()
