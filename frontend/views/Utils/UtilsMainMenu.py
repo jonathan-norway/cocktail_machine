@@ -100,11 +100,7 @@ class UtilsMain(MainMenu):
         if platform.system() != "Windows":
             print("ACTUALLY UPDATING!!")
             command_to_run = "/usr/bin/pkill -f mixmaster && /home/jonathan-pi/startup.sh"
-            subprocess.call(command_to_run, shell=True)
-            try:
-                subprocess.check_output(command_to_run, shell=True, stderr=subprocess.STDOUT)
-            except subprocess.CalledProcessError as e:
-                print(f"Error: {e.output.decode('utf-8')}")
+            subprocess.Popen(command_to_run, shell=True)
 
     def inner_navigate(self, to: UtilsModeMenu):
         previous_index = self.sub_menu_layout.currentIndex()
