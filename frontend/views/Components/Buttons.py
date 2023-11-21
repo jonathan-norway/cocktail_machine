@@ -17,7 +17,6 @@ class PreviousButton(QPushButton):
         return_icon.actualSize(QSize(36, 36))
         super(PreviousButton, self).__init__(icon=return_icon)
         self.navigation_history: list[(Callable, Callable)] = []
-        self.setFixedSize(130, 30)
         button_size_policy = self.sizePolicy()
         button_size_policy.setRetainSizeWhenHidden(True)
         self.setSizePolicy(button_size_policy)

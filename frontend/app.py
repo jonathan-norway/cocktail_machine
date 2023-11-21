@@ -8,13 +8,13 @@ def main():
                                  QSpacerItem, QStackedLayout, QVBoxLayout, QWidget)
     app = QApplication(sys.argv)
 
-    from . import GuiConstants
+    import GuiConstants
     from PIL import Image
     from PyQt5.QtCore import QSize, Qt
     from PyQt5.QtGui import QColor, QFont, QFontDatabase, QIcon, QPalette, QPixmap
 
-    from .views import CustomDrinkMenu, DrinkMenuView, ShotsMainMenu, UtilsMain
-    from .views.MainMenu import MainView
+    from frontend.views import CustomDrinkMenu, DrinkMenuView, ShotsMainMenu, UtilsMain
+    from frontend.views.MainMenu import MainView
 
     color_palette = {
         "black": "#191919",
@@ -59,7 +59,7 @@ def main():
             content_layout.addWidget(CustomDrinkMenu())
             content_layout.addWidget(ShotsMainMenu())
             content_layout.addWidget(UtilsMain())
-            self.content_layout.setCurrentIndex(1)
+            # self.content_layout.setCurrentIndex(1)
 
         def get_header(self) -> QWidget:
             header_layout = QHBoxLayout()

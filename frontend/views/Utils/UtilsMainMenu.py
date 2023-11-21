@@ -30,6 +30,9 @@ class UtilsModeMenu(Enum):
 class UtilsMain(MainMenu):
     def __init__(self):
         super(UtilsMain, self).__init__("Utilities")
+        self.add_modes()
+
+    def add_modes(self):
         self.add_mode(self.modes_menu())
         self.add_mode(self.update_ingredients_mode())
         self.add_mode(self.update_alcohols_mode())
@@ -107,6 +110,7 @@ class UtilsMain(MainMenu):
         self.subheader.add_navigater(
             lambda: self.sub_menu_layout.setCurrentIndex(
                 previous_index))
+        SecondHeader.update_header(to.value)
         self.sub_menu_layout.setCurrentIndex(to.value)
 
     def update_ingredients_mode(self):

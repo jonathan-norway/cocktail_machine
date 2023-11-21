@@ -11,8 +11,8 @@ from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
 
 from backend import CocktailMachine
 
-from frontend.views.Components import (DetailedDrinkView, DrinkCard, DrinkList, MainMenu,
-                                       MenuModeCard, ModeMenuLayout, SecondHeader, Card, CardList)
+from ..Components import (DetailedDrinkView, DrinkCard, DrinkList, MainMenu,
+                          MenuModeCard, ModeMenuLayout, SecondHeader, Card, CardList)
 
 
 class DrinkMenuModes(Enum):
@@ -31,7 +31,7 @@ current_directory = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 class DrinkMenuView(MainMenu):
     def __init__(self):
-        super(DrinkMenuView, self).__init__("Drinks")
+        super(DrinkMenuView, self).__init__(title="Drinks")
         self.add_all_modes()
 
     def add_all_modes(self):
@@ -117,7 +117,7 @@ class DrinkMenuView(MainMenu):
         self.sub_menu_layout.setCurrentIndex(target_page.value)
         self.subheader.add_navigater(
             lambda: self.sub_menu_layout.setCurrentIndex(origin_page_index))
-        SecondHeader.update_header(title=new_title)
+        self.subheader.update_header(title=new_title)
 
     def base_alcohol_mode(self):
         self.card_list = CardList()

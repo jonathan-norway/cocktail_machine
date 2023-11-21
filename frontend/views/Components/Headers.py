@@ -10,9 +10,10 @@ from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
 from .Buttons import PreviousButton
 
 
-class _SecondHeader(QWidget):
-    def __init__(self, title: str = ""):
-        super(_SecondHeader, self).__init__()
+class SecondHeader(QWidget):
+    def __init__(self, title: str = "", ):
+        super(SecondHeader, self).__init__()
+
         subheader_layout = QHBoxLayout()
         subheader_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         self._previous_button = PreviousButton()
@@ -44,29 +45,16 @@ class _SecondHeader(QWidget):
         self.setLayout(subheader_layout)
         self.setContentsMargins(0, 0, 0, 0)
         self.setFixedHeight(50)
-        self.navigate_history = []
         self.navigate_func = None
 
     def update_header(self, title: str = None, icon_path: str = None,
                       navigate_func: Callable = None, navigate_history: list = None):
         if title:
             self.header_title.setText(title)
-        if icon_path:
-            print("IT IS CALLED!!! Components/Headers.py:55")
-            subheader_pixmap = QPixmap(icon_path)
-            subheader_pixmap = subheader_pixmap.scaled(
-                QSize(36, 36),
-                Qt.AspectRatioMode.KeepAspectRatio,
-                Qt.TransformationMode.SmoothTransformation,
-            )
-            self.header_icon_label.setPixmap(subheader_pixmap)
-            self._previous_button.update(navigate_func, navigate_history)
 
     def add_navigater(self, navigate_func: Callable[[None], None]) -> None:
         old_title = self.header_title.text()
+
         self._previous_button.update_nav(
             navigate_func, lambda: self.update_header(
                 old_title))
-
-
-SecondHeader = _SecondHeader()

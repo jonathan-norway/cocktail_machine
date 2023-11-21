@@ -19,7 +19,7 @@ class MainMenu(QWidget):
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop)
         self.setLayout(main_layout)
-        self.subheader = SecondHeader
+        self.subheader = SecondHeader(title)
         self.subheader.update_header(title=title)
 
         self.sub_menu_layout = QStackedLayout()
