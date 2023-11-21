@@ -99,7 +99,7 @@ class UtilsMain(MainMenu):
         print("PULL LATEST FROM GITHUB NOW!!")
         if platform.system() != "Windows":
             print("ACTUALLY UPDATING!!")
-            command_to_run = "/home/jonathan-pi/startup.sh"
+            command_to_run = "/home/jonathan-pi/restart.sh"
             subprocess.Popen(command_to_run, shell=True)
 
     def inner_navigate(self, to: UtilsModeMenu):
