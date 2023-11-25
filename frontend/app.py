@@ -8,7 +8,7 @@ def main():
                                  QSpacerItem, QStackedLayout, QVBoxLayout, QWidget)
     app = QApplication(sys.argv)
 
-    import GuiConstants
+    from . import GuiConstants
     from PIL import Image
     from PyQt5.QtCore import QSize, Qt
     from PyQt5.QtGui import QColor, QFont, QFontDatabase, QIcon, QPalette, QPixmap

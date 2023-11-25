@@ -1,7 +1,8 @@
 #include <Adafruit_NeoPixel.h>
 #define LED_PIN 6
 #define LED_COUNT 35
-Adafruit_NeoPixel ring(LED_COUNT, LED_PIN, NEO_RGBW + NEO_KHZ800);
+Adafruit_NeoPixel ring(LED_COUNT, LED_PIN, NEO_RGB + NEO_KHZ800);
+int start_pin = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -14,14 +15,15 @@ void loop() {
   // put your main code here, to run repeatedly:
 
   for(int i = 0; i < ring.numPixels(); i++) {
-    ring.setPixelColor(i, 0, 0, 125, 10);
+    ring.setPixelColor((i+start_pin)%LED_COUNT, 0, 0, 125, 5);
     ring.show();
-    delay(50);
+    delay(15);
   }
-
+  //delay(50);
   for(int i = 0; i < ring.numPixels(); i++) {
-    ring.setPixelColor(i, 0, 0, 0, 0);
+    ring.setPixelColor((i+start_pin)%LED_COUNT, 0, 0, 0, 0);
     ring.show();
-    delay(50);
+    delay(10);
   }
+  start_pin += 4;
 }
