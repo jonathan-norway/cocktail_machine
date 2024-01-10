@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import (QApplication, QDialog, QHBoxLayout, QLabel,
                              QMainWindow, QPushButton, QSizePolicy,
                              QSpacerItem, QStackedLayout, QVBoxLayout, QWidget)
 app = QApplication(sys.argv)
-import GuiConstants
+from frontend import GuiConstants
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QColor, QFont, QFontDatabase, QIcon, QPalette, QPixmap
 from frontend.views import CustomDrinkMenu, DrinkMenuView, ShotsMainMenu, UtilsMain
