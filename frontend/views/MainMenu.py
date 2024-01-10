@@ -1,62 +1,69 @@
-import os
-import sys
-from pathlib import Path
 from typing import Callable
-
-# sys.path.append(str(Path(__file__).parent.parent.resolve()) + "/GuiConstants.py")
-from frontend.GuiConstants import GuiViews, color_palette
-from PyQt5.QtCore import QSize
-from PyQt5.QtGui import QColor, QFont, QIcon, QPainter, QPixmap
-from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
-                             QLabel, QPushButton, QVBoxLayout, QWidget)
+from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QWidget
 import logging
-from .Components import NavCard
 
-current_directory = os.path.dirname(os.path.dirname(__file__))
+from .Components import NavCard
+from frontend.GuiConstants import GuiViews
+from frontend.icons import icon_dict
+
 logger = logging.getLogger(__name__)
 
 
 class MainView(QWidget):
+    MAX_CARDS_PER_LINE = 2
+
     def __init__(self, navigate_to: Callable):
         logger.info("Initializing MainView")
         super(MainView, self).__init__()
-        vertical_layout = QVBoxLayout()
+        self.setup_view(navigate_to)
+        logger.info("Finished initializing MainView")
 
-        horizontal_layout_top = QHBoxLayout()
-        horizontal_layout_top.setSpacing(10)
-        horizontal_layout_top.addWidget(
+    def setup_view(self, navigate_to: Callable[[int], None]) -> None:
+        self.setLayout(QVBoxLayout())
+        self.layout_list = []
+
+        nav_cards = [
             NavCard(
                 "Drink Menu",
                 lambda: navigate_to(
                     GuiViews.DRINK_MENU),
-                current_directory +
-                "/icons/cocktail.png"))
-        horizontal_layout_top.addWidget(
+                icon_dict["cocktail"]
+            ),
             NavCard(
                 "Custom Drink",
                 lambda: navigate_to(
                     GuiViews.CUSTOM_DRINK),
-                current_directory +
-                "/icons/bottles.png"))
-
-        horizontal_layout_bottom = QHBoxLayout()
-        horizontal_layout_bottom.setSpacing(10)
-        horizontal_layout_bottom.addWidget(
+                icon_dict["bottles"]
+            ),
             NavCard(
                 "Shots",
                 lambda: navigate_to(
                     GuiViews.SHOTS),
-                current_directory +
-                "/icons/shot.png"))
-        horizontal_layout_bottom.addWidget(
+                icon_dict["shot"]
+            ),
             NavCard(
                 "Utils",
                 lambda: navigate_to(
                     GuiViews.UTILS),
-                current_directory +
-                "/icons/tools.png"))
+                icon_dict["tools"]
+            )
+        ]
+        for nav_card in nav_cards:
+            current_layout = self.get_current_layout_or_create_new()
+            current_layout.addWidget(nav_card)
 
-        vertical_layout.addLayout(horizontal_layout_top)
-        vertical_layout.addLayout(horizontal_layout_bottom)
-        self.setLayout(vertical_layout)
-        logger.info("Finished initializing MainView")
+    @staticmethod
+    def _create_new_h_layout_widget():
+        horizontal_layout = QHBoxLayout()
+        horizontal_layout.setSpacing(10)
+        return horizontal_layout
+
+    def get_current_layout_or_create_new(self):
+        if len(
+                self.layout_list) == 0 or self.layout_list[-1].count() >= MainView.MAX_CARDS_PER_LINE:
+            h_layout = MainView._create_new_h_layout_widget()
+            self.layout().addLayout(h_layout)
+            self.layout_list.append(h_layout)
+            return h_layout
+        else:
+            return self.layout_list[-1].layout()

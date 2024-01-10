@@ -7,7 +7,43 @@ from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
                              QLabel, QPushButton, QSizePolicy, QSpacerItem,
                              QStackedLayout, QVBoxLayout, QWidget)
 
-from .Buttons import PreviousButton
+from .Buttons import PreviousButton, MainMenuReturnButton
+from frontend.icons import icon_dict
+
+
+class MainHeader(QWidget):
+    def __init__(self, navigate_to: Callable[[int], None]):
+        super(MainHeader, self).__init__()
+        self.setup_main_header(navigate_to)
+
+    def setup_main_header(self, navigate_to):
+        self.setLayout(QHBoxLayout())
+        self.layout().setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop)
+        shaker_pixmap = QPixmap(icon_dict["shaker"])
+        shaker_pixmap = shaker_pixmap.scaled(
+            QSize(
+                45,
+                45),
+            Qt.AspectRatioMode.KeepAspectRatio,
+            Qt.TransformationMode.SmoothTransformation)
+        pixmap_label = QLabel()
+        pixmap_label.setPixmap(shaker_pixmap)
+        pixmap_label.setFixedSize(55, 55)
+        title_label = QLabel("MixMaster")
+        title_label.setFixedWidth(250)
+        # title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        title_font = QFont("Roboto", 40)
+        title_label.setFont(title_font)
+
+        self.main_menu_button = MainMenuReturnButton(navigate_func=navigate_to)
+        self.main_menu_button.setVisible(False)
+        self.layout().addSpacerItem(QSpacerItem(self.main_menu_button.width(), 5))
+        self.layout().addWidget(pixmap_label)
+        self.layout().addWidget(title_label)
+        self.layout().addSpacerItem(QSpacerItem(pixmap_label.width(), 5))
+        self.layout().addWidget(self.main_menu_button)
+        self.setFixedHeight(80)
+        self.setStyleSheet("border-bottom: 2px solid black")
 
 
 class SecondHeader(QWidget):
@@ -24,22 +60,24 @@ class SecondHeader(QWidget):
         font = self.header_title.font()
         font.setPointSize(26)
         self.header_title.setFont(font)
-        subheader_spacing_item = QSpacerItem(
-            150, 5
-        )
         main_label_layout = QHBoxLayout()
-        main_label_layout.setAlignment(Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignTop)
+        main_label_layout.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop)
         main_label_layout.addWidget(self.header_icon_label)
         main_label_layout.addWidget(self.header_title)
         main_label_layout.setContentsMargins(0, 0, 0, 0)
         main_label_widget = QWidget()
         main_label_widget.setLayout(main_label_layout)
-        subheader_layout.addSpacerItem(QSpacerItem(15, 5))
+        button_spacer = QSpacerItem(35, 5)
+        subheader_layout.addSpacerItem(button_spacer)
         subheader_layout.addWidget(
-            self._previous_button, Qt.AlignmentFlag.AlignLeft
+            self._previous_button, Qt.AlignmentFlag.AlignCenter
         )
         subheader_layout.addWidget(main_label_widget, Qt.AlignmentFlag.AlignCenter)
-        subheader_layout.addItem(subheader_spacing_item)
+        subheader_layout.addItem(
+            QSpacerItem(
+                self._previous_button.size().width() +
+                button_spacer.sizeHint().width(),
+                5))
         subheader_layout.setContentsMargins(0, 0, 0, 0)
         subheader_layout.setSpacing(0)
         self.setLayout(subheader_layout)

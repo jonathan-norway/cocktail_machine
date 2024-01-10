@@ -37,7 +37,6 @@ class DrinkMenuView(MainMenu):
         logger.info("Initializing DrinkMenuView")
         self.add_all_modes()
         logger.info("Finished initializing DrinkMenuView")
-        print(f"{__name__=}")
 
     def add_all_modes(self):
         logger.info("Adding DrinkMenuView modes")
