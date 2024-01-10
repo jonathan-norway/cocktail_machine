@@ -9,14 +9,16 @@ from PyQt5.QtCore import QSize
 from PyQt5.QtGui import QColor, QFont, QIcon, QPainter, QPixmap
 from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
                              QLabel, QPushButton, QVBoxLayout, QWidget)
-
+import logging
 from .Components import NavCard
 
 current_directory = os.path.dirname(os.path.dirname(__file__))
+logger = logging.getLogger(__name__)
 
 
 class MainView(QWidget):
     def __init__(self, navigate_to: Callable):
+        logger.info("Initializing MainView")
         super(MainView, self).__init__()
         vertical_layout = QVBoxLayout()
 
@@ -57,3 +59,4 @@ class MainView(QWidget):
         vertical_layout.addLayout(horizontal_layout_top)
         vertical_layout.addLayout(horizontal_layout_bottom)
         self.setLayout(vertical_layout)
+        logger.info("Finished initializing MainView")

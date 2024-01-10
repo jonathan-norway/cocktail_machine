@@ -1,1 +1,3 @@
 venv/
+**/logs/
+backend/__pycache__/*

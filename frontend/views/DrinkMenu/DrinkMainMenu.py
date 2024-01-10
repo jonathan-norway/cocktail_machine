@@ -27,20 +27,27 @@ class DrinkMenuModes(Enum):
 import os
 
 current_directory = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+import logging
+logger = logging.getLogger(__name__)
 
 
 class DrinkMenuView(MainMenu):
     def __init__(self):
         super(DrinkMenuView, self).__init__(title="Drinks")
+        logger.info("Initializing DrinkMenuView")
         self.add_all_modes()
+        logger.info("Finished initializing DrinkMenuView")
+        print(f"{__name__=}")
 
     def add_all_modes(self):
+        logger.info("Adding DrinkMenuView modes")
         self.add_mode(self.modes_menu())
         self.add_mode(self.base_alcohol_mode())
         self.add_mode(self.base_alcohol_mode())
         self.add_mode(self.base_alcohol_mode())
         self.add_mode(self.list_display_mode())
         self.add_mode(self.detailed_display_mode())
+        logger.info("Finished adding DrinkMenuView modes")
 
     def list_display_mode(self):
         v_layout = QVBoxLayout()
@@ -120,6 +127,7 @@ class DrinkMenuView(MainMenu):
         self.subheader.update_header(title=new_title)
 
     def base_alcohol_mode(self):
+        logger.info("Adding DrinkMenuView base_alcohol mode")
         self.card_list = CardList()
         for base_alcohol in base_alcohols:
             self.card_list.add_card(
@@ -131,4 +139,5 @@ class DrinkMenuView(MainMenu):
                         name),
                 )
             )
+        logger.info("Finished adding DrinkMenuView base_alcohol mode")
         return self.card_list

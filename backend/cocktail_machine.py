@@ -9,15 +9,14 @@ from typing import List, Dict
 from dataclasses import asdict
 import uuid
 
-
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    filemode="w",
-    filename="cocktail_machine.log",
-    encoding="utf-8",
-    level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+# logger = logging.getLogger('backend.app')
+logger.setLevel(logging.DEBUG)
 
+file_handler = logging.FileHandler('logs/backend.log', mode='w', encoding='utf-8')
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 current_directory = Path(__file__).parent
 
