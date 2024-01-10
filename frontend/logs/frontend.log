@@ -1,0 +1,18 @@
+2024-01-10 15:35:01,748 - frontend - INFO - Setting up main_window
+2024-01-10 15:35:01,763 - frontend - INFO - Adding views to main_window
+2024-01-10 15:35:01,763 - frontend.views.MainMenu - INFO - Initializing MainView
+2024-01-10 15:35:01,769 - frontend.views.MainMenu - INFO - Finished initializing MainView
+2024-01-10 15:35:02,040 - frontend.views.DrinkMenu.DrinkMainMenu - INFO - Initializing DrinkMenuView
+2024-01-10 15:35:02,041 - frontend.views.DrinkMenu.DrinkMainMenu - INFO - Adding DrinkMenuView modes
+2024-01-10 15:35:02,056 - frontend.views.DrinkMenu.DrinkMainMenu - INFO - Adding DrinkMenuView base_alcohol mode
+2024-01-10 15:35:02,062 - frontend.views.DrinkMenu.DrinkMainMenu - INFO - Finished adding DrinkMenuView base_alcohol mode
+2024-01-10 15:35:02,063 - frontend.views.DrinkMenu.DrinkMainMenu - INFO - Adding DrinkMenuView base_alcohol mode
+2024-01-10 15:35:02,064 - frontend.views.DrinkMenu.DrinkMainMenu - INFO - Finished adding DrinkMenuView base_alcohol mode
+2024-01-10 15:35:02,064 - frontend.views.DrinkMenu.DrinkMainMenu - INFO - Adding DrinkMenuView base_alcohol mode
+2024-01-10 15:35:02,065 - frontend.views.DrinkMenu.DrinkMainMenu - INFO - Finished adding DrinkMenuView base_alcohol mode
+2024-01-10 15:35:02,068 - frontend.views.DrinkMenu.DrinkMainMenu - INFO - Finished adding DrinkMenuView modes
+2024-01-10 15:35:02,068 - frontend.views.DrinkMenu.DrinkMainMenu - INFO - Finished initializing DrinkMenuView
+2024-01-10 15:35:02,106 - frontend - INFO - Finished adding views to main_window
+2024-01-10 15:35:02,106 - frontend - INFO - Finished setting up main_window
+2024-01-10 15:35:02,106 - frontend - INFO - Starting frontend through app.py
+2024-01-10 15:35:02,671 - frontend - INFO - Navigating to DRINK_MENU
