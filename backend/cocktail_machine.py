@@ -4,13 +4,12 @@ import os
 from pathlib import Path
 from .pump import Pump
 import logging
-from .datatypes import CocktailRecipe, ExternalIngredient
-from typing import List, Dict
+from .datatypes import CocktailRecipe, ExternalIngredient, DrinkStatistics, CocktailStatisticsWithRecipe
+from typing import List, Dict, NamedTuple
 from dataclasses import asdict
 import uuid
 
 logger = logging.getLogger(__name__)
-# logger = logging.getLogger('backend.app')
 logger.setLevel(logging.DEBUG)
 
 file_handler = logging.FileHandler('logs/backend.log', mode='w', encoding='utf-8')
@@ -170,9 +169,12 @@ class CocktailMachineClass():
             json.dump(temp_dict, f)
 
     def load_statistics(self):
+        self.statistics: Dict[str, DrinkStatistics] = dict()
         with open(STATISTICS_FILE, mode="rt", encoding="utf-8") as f:
-            statistics_from_file = json.load(f)
-        self.statistics = statistics_from_file if statistics_from_file else {}
+            statistics_from_file: dict = json.load(f)
+        for cocktail_name, times_made in statistics_from_file.items():
+            self.statistics[cocktail_name] = DrinkStatistics(cocktail_name, times_made)
+        # self.statistics = statistics_from_file if statistics_from_file else {}
 
     def _test_i2c(self, alcohol_name: str, milliseconds: int) -> None:
         pump = self._pumps_dict[alcohol_name]
@@ -203,6 +205,31 @@ class CocktailMachineClass():
                         updated_pump.pump_code][0]
         self._pumps_dict[old_pump_key] = updated_pump
         self._save_pumps()
+
+    def get_most_popular_cocktails(self) -> List[DrinkStatistics]:
+        return list(self.get_statistics().values()).sort(
+            key=lambda drink_statistic: drink_statistic.times_made, reverse=True)
+
+    def get_most_popular_available_cocktails(self) -> List[CocktailStatisticsWithRecipe]:
+        cocktail_statistics = self.get_most_popular_cocktails()
+
+        available_cocktails_by_popularity: List[CocktailStatisticsWithRecipe] = []
+        for cocktail_statistic in cocktail_statistics:
+            try:
+                cocktail_recipe = self.get_cocktail_recipe(cocktail_statistic.name)
+            except ValueError:
+                logger.warning(
+                    f"Cocktail recipe for cocktail statistics {cocktail_statistic!r} for available")
+                continue
+            available_cocktails_by_popularity.append(
+                CocktailStatisticsWithRecipe(
+                    statistics=cocktail_statistic,
+                    recipe=cocktail_recipe))
+
+        return available_cocktails_by_popularity
+
+    def get_statistics(self):
+        return self.statistics
 
 
 CocktailMachine = CocktailMachineSingleton.get_instance()

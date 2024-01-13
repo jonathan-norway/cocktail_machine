@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
                              QLabel, QPushButton, QSizePolicy, QSpacerItem,
                              QStackedLayout, QVBoxLayout, QWidget)
 
-from ..Components import MainMenu, Card, ModeMenuLayout, SecondHeader, InventoryTable, Card, CardList
+from frontend.components import MainMenu, Card, ModeMenuLayout, SecondHeader, InventoryTable, Card, CardList
 from .PumpTable import PumpTable
 from .CalibrationTool import CalibrationTool
 import subprocess

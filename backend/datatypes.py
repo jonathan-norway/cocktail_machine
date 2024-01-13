@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List, Dict
+from typing import List, Dict, NamedTuple
 
 
 @dataclass(frozen=True)
@@ -36,3 +36,15 @@ class ExternalIngredient:
     amount: int = field(default=0)
     date_added: str = field(default=datetime.now().date().strftime("%Y-%m-%d"))
     unit: ValidIngredientUnits = field(default=ValidIngredientUnits.UNKNOWN)
+
+
+@dataclass
+class DrinkStatistics:
+    name: str
+    times_made: int
+
+
+CocktailStatisticsWithRecipe = NamedTuple(
+    "CocktailStatisticsWithRecipe",
+    statistics=DrinkStatistics,
+    recipe=CocktailRecipe)

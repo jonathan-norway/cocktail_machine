@@ -27,6 +27,338 @@
     ],
     "external_link": "https://www.liquor.com/recipes/cosmopolitan/"
   },
+  "classic_vodka_martini": {
+    "base": "vodka",
+    "description": "Dry: little to no vermouth. Wet: more vermouth. Dirty: Splash of olive juice",
+    "summary": "\"Vodka Martini, shaken, not stirred\"\n- James Bond",
+    "ingredients": {
+      "vodka": 60,
+      "vermouth": 15,
+      "lemon": 1,
+      "olive": 1
+    },
+    "garnish": "Lemon peel / olive",
+    "glass_type": "martini glass",
+    "tags": [
+      "IBA",
+      "Timeless",
+      "Neat"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster",
+      "Either shake or stir for 20 seconds",
+      "Strain into chilled martini glass",
+      "Garnish with lemon peel or olive "
+    ],
+    "external_link": "https://www.delish.com/cooking/recipe-ideas/a29252178/classic-vodka-martini-recipe/"
+  },
+  "bay_breeze": {
+    "base": "vodka",
+    "description": "The Bay Breeze is a cocktail known for its refreshing and fruity flavors. It's a simple mixed drink that belongs to the family of tropical cocktails",
+    "summary": "Beach House Vibes",
+    "ingredients": {
+      "vodka": 40,
+      "cranberry_juice": 120,
+      "pineapple_juice": 30
+    },
+    "garnish": "lime",
+    "glass_type": "highball glass",
+    "tags": [
+      "tropical",
+      "fruity"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster",
+      "Add additional ingredients",
+      "Stir for 15 seconds",
+      "Run a lime wheel around the glass rim",
+      "Garnish with the same lime wheel"
+    ],
+    "external_link": "https://www.delish.com/cooking/recipe-ideas/a43932676/bay-breeze-cocktail-recipe/"
+  },
+  "moscow_mule": {
+    "base": "vodka",
+    "description": "The Moscow Mule was actually invented in Los Angeles as part of an early stateside marketing push for vodka",
+    "summary": "Known for it's iconic copper mug",
+    "ingredients": {
+      "vodka": 40,
+      "ginger_beer": 150,
+      "lime": 1
+    },
+    "garnish": "lime wedge or mint",
+    "glass_type": "copper mug",
+    "tags": [
+      "classic",
+      "IBA"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster",
+      "Cut the lime into wedges. We only need 1/2",
+      "Add juice from the lime wedges",
+      "Add the wedges",
+      "Add ginger beer",
+      "Garnish with lime wedge and mint"
+    ],
+    "external_link": "https://www.liquor.com/recipes/moscow-mule-cocktail-recipe/"
+  },
+  "screwdriver": {
+    "base": "vodka",
+    "description": "The name originates from factory workers stirring the drink with a screwdriver when a spoon couldn't be found",
+    "summary": "An every-day mimosa",
+    "ingredients": {
+      "vodka": 40,
+      "orange_juice": 80
+    },
+    "garnish": "",
+    "glass_type": "highball glass",
+    "tags": [
+      "IBA",
+      "Simple"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster",
+      "Stir for 15 seconds"
+    ],
+    "external_link": "https://www.liquor.com/recipes/screwdriver/"
+  },
+  "midori_sour": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "bloody_mary": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "espresso_martini": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "lemon_drop": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "dirty_shirley": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "sex_on_the_beach": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "white_russian": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "long_island_iced_tea": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "vodka_tonic": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "black_russian": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "seabreeze": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "appletini": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
+  "pornstar_martini": {
+    "base": "vodka",
+    "description": "test",
+    "summary": "test",
+    "ingredients": {
+      "vodka": "test"
+    },
+    "garnish": "",
+    "glass_type": "",
+    "tags": [
+      "fancy"
+    ],
+    "origin_country": "USA",
+    "steps": [
+      "Run MixMaster"
+    ],
+    "external_link": "https://www.liquor.com/recipes/TEMPLATE/"
+  },
   "template": {
     "base": "vodka",
     "description": "test",

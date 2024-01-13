@@ -2,7 +2,7 @@ from typing import Callable
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QWidget
 import logging
 
-from .Components import NavCard
+from frontend.components import NavCard
 from frontend.GuiConstants import GuiViews
 from frontend.icons import icon_dict
 

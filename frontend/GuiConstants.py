@@ -2,7 +2,9 @@ import os
 from enum import Enum, auto
 
 color_palette = {
-    "black": "#231F20", "white": "#F2F1E6", "blue": "#05A3AD", "button-color": "#0095f"
+    "black": "#191919",
+    "white": "#FFFFFF",
+    "blue": "#05A3AD"
 }
 MAX_WIDTH = 1024
 MAX_HEIGHT = 550
@@ -17,6 +19,15 @@ class GuiViews(Enum):
     UTILS = auto()
 
 
+class DrinkMenuModes(Enum):
+    MAIN = 0
+    BASE_ALCOHOL = auto()
+    POPULARITY = auto()
+    MOOD = auto()
+    DISPLAY_LIST = auto()
+    DISPLAY_DETAILED = auto()
+
+
 base_alcohols = [
     {
         "name": "vodka",
@@ -25,7 +36,7 @@ base_alcohols = [
     },
     {
         "name": "gin",
-        "description": "Dry and herby, and distilled from grain.",
+        "description": "Dry and herb-y, and distilled from grain.",
         "icon": current_directory + "/icons/gin.png",
     },
     {

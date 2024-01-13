@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import (QFrame, QGraphicsDropShadowEffect, QHBoxLayout,
                              QLabel, QPushButton, QSizePolicy, QSpacerItem,
                              QStackedLayout, QVBoxLayout, QWidget)
 
-from ..Components import MainMenu, MenuModeCard, ModeMenuLayout, SecondHeader
+from frontend.components import MainMenu, MenuModeCard, ModeMenuLayout, SecondHeader
 
 current_directory = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 

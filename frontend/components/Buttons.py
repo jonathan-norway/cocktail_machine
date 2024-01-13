@@ -1,21 +1,17 @@
-import os
-from enum import Enum, auto
+
 from typing import Callable
 
-from frontend.GuiConstants import GuiViews, base_alcohols, color_palette
 from PyQt5.QtCore import QSize, Qt
-from PyQt5.QtGui import QColor, QFont, QIcon, QPixmap
+from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtWidgets import QPushButton, QFrame, QHBoxLayout, QLabel, QWidget
-from .Labels import CenterQLabel
-
-current_directory = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+from frontend.icons import icon_dict
 from frontend import GuiConstants
 
 
 class MainMenuReturnButton(QWidget):
     def __init__(self, navigate_func: Callable):
         super(MainMenuReturnButton, self).__init__()
-        return_pixmap = QPixmap(current_directory + "/icons/house.png")
+        return_pixmap = QPixmap(icon_dict["house"])
         return_pixmap = return_pixmap.scaled(
             QSize(
                 55,
@@ -27,12 +23,12 @@ class MainMenuReturnButton(QWidget):
         self.setSizePolicy(sizePolicy)
         self.return_label = QLabel()
         self.return_label.setPixmap(return_pixmap)
-        self.return_label.setFixedSize(60, 60)
         self.navigate_func = navigate_func
         default_layout = QHBoxLayout()
         default_layout.setAlignment(Qt.AlignmentFlag.AlignRight)
         default_layout.addWidget(self.return_label)
         self.setLayout(default_layout)
+        self.setFixedSize(75, 75)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
@@ -41,14 +37,14 @@ class MainMenuReturnButton(QWidget):
 
 class PreviousButton(QPushButton):
     def __init__(self):
-        return_icon = QIcon(current_directory + "/icons/return.png")
+        return_icon = QIcon(icon_dict["return"])
         # return_icon.actualSize(QSize(50, 36))
         super(PreviousButton, self).__init__(icon=return_icon)
         self.navigation_history: list[(Callable, Callable)] = []
         button_size_policy = self.sizePolicy()
         button_size_policy.setRetainSizeWhenHidden(True)
         self.setSizePolicy(button_size_policy)
-        self.setFixedSize(QSize(75, 35))
+        self.setFixedSize(QSize(95, 35))
         self.setVisible(False)
         self.setEnabled(False)
         self.clicked.connect(self._go_back)
@@ -100,30 +96,21 @@ class MakeMeADrinkButton(QFrame):
             print(f"{res=}")
 
 
-class MainMenuReturnButton(QWidget):
-    def __init__(self, navigate_func: Callable):
-        super(MainMenuReturnButton, self).__init__()
-        return_pixmap = QPixmap(current_directory + "/icons/house.png")
-        return_pixmap = return_pixmap.scaled(
-            QSize(
-                55,
-                55),
-            Qt.AspectRatioMode.KeepAspectRatio,
-            Qt.TransformationMode.SmoothTransformation)
-        sizePolicy = self.sizePolicy()
-        sizePolicy.setRetainSizeWhenHidden(True)
-        self.setSizePolicy(sizePolicy)
-        self.return_label = QLabel()
-        self.return_label.setPixmap(return_pixmap)
-        self.return_label.setFixedSize(60, 60)
-        self.navigate_func = navigate_func
-        default_layout = QHBoxLayout()
-        default_layout.setAlignment(Qt.AlignmentFlag.AlignRight)
-        default_layout.addWidget(self.return_label)
-        self.setLayout(default_layout)
-        self.setVisible(True)
-        self.setContentsMargins(150, 0, 0, 0)
+class ListNavigateButton(QWidget):
+    def __init__(self, icon_path: str, on_click: Callable):
+        super(ListNavigateButton, self).__init__()
+        pixmap = QPixmap(icon_path)
+        pixmap = pixmap.scaled(50, 36)
+        button_label = QLabel()
+        button_label.setPixmap(pixmap)
+        size_policy = self.sizePolicy()
+        size_policy.setRetainSizeWhenHidden(True)
+        self.setSizePolicy(size_policy)
+        layout = QHBoxLayout()
+        layout.addWidget(button_label)
+        self.on_click = on_click
+        self.setLayout(layout)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.MouseButton.LeftButton:
-            self.navigate_func(GuiConstants.GuiViews.MAIN_MENU)
+            self.on_click()

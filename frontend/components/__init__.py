@@ -1,4 +1,4 @@
-from .Drink import DetailedDrinkView, DrinkCard, DrinkList
+from .Drink import DrinkCard
 from .Headers import SecondHeader
 from .Labels import CenterQLabel
 from .MainMenu import MainMenu

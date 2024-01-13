@@ -1,10 +1,10 @@
 {
-  "sparkling water": {
+  "sparkling_water": {
     "amount": 300,
     "date_added": "2023-10-12",
     "unit": "mL"
   },
-  "orange juice": {
+  "orange_juice": {
     "amount": 1000,
     "date_added": "2023-10-12",
     "unit": "mL"
@@ -14,17 +14,17 @@
     "date_added": "2023-10-12",
     "unit": "mL"
   },
-  "lemon juice": {
+  "lemon_juice": {
     "amount": 300,
     "date_added": "2023-10-12",
     "unit": "mL"
   },
-  "cranberry juice": {
+  "cranberry_juice": {
     "amount": 300,
     "date_added": "2023-10-12",
     "unit": "mL"
   },
-  "lime juice": {
+  "lime_juice": {
     "amount": 350,
     "date_added": "2023-10-12",
     "unit": "mL"
@@ -34,27 +34,27 @@
     "date_added": "2023-10-12",
     "unit": "mL"
   },
-  "apple juice": {
+  "apple_juice": {
     "amount": 300,
     "date_added": "2023-10-12",
     "unit": "mL"
   },
-  "tomato juice": {
+  "tomato_juice": {
     "amount": 500,
     "date_added": "2023-10-12",
     "unit": "mL"
   },
-  "ginger beer": {
+  "ginger_beer": {
     "amount": 500,
     "date_added": "2023-10-12",
     "unit": "mL"
   },
-  "coconut milk": {
+  "coconut_milk": {
     "amount": 400,
     "date_added": "2023-10-12",
     "unit": "mL"
   },
-  "simple syrup": {
+  "simple_syrup": {
     "amount": 100,
     "date_added": "2023-10-12",
     "unit": "mL"
@@ -79,7 +79,7 @@
     "date_added": "2023-10-12",
     "unit": "mL"
   },
-  "lillet blanc": {
+  "lillet_blanc": {
     "amount": 300,
     "date_added": "2023-10-12",
     "unit": "mL"
@@ -92,6 +92,26 @@
   "vermouth": {
     "amount": 300,
     "date_added": "2023-10-12",
+    "unit": "mL"
+  },
+  "lemon": {
+    "amount": 5,
+    "date_added": "2024-01-10",
+    "unit": "pcs"
+  },
+  "lime": {
+    "amount": 5,
+    "date_added": "2024-01-10",
+    "unit": "pcs"
+  },
+  "pineapple_juice": {
+    "amount": 500,
+    "date_added": "2024-01-10",
+    "unit": "mL"
+  },
+  "cream": {
+    "amount": 300,
+    "date_added": "2024-01-10",
     "unit": "mL"
   }
 }

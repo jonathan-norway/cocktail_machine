@@ -7,3 +7,4 @@ class CenterQLabel(QLabel):
         super(CenterQLabel, self).__init__(text=title)
         self.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.setContentsMargins(0, 0, 0, 0)
+        self.setWordWrap(True)
